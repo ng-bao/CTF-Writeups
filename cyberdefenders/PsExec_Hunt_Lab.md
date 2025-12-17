@@ -1,6 +1,6 @@
 # PsExec Hunt Lab
 <img width="1103" height="267" alt="image" src="https://github.com/user-attachments/assets/94d15c65-c7a6-42ff-aa3c-ebc372e58107" />
-I have a pcapng file and following the scenario. Following the clue is PsExec, I can guess it relative to MSB2 protocol(This protocol is typically used by Windows to share files or printers within a LAN) so I focus on it to answer questions.
+I have a pcapng file and following the scenario. Following the clue is PsExec, I can guess it relative to SMB2 protocol(This protocol is typically used by Windows to share files or printers within a LAN) so I focus on it to answer questions.
 
 ## Solve
 Q1: To effectively trace the attacker's activities within our network, can you identify the IP address of the machine from which the attacker initially gained access?
@@ -43,7 +43,7 @@ By analyzing the network traffic in the provided pcap file, we can clearly see t
 Q6: We must identify the network share used to communicate between the two machines. Which network share did PsExec use for communication?
 
 <img width="1133" height="52" alt="image" src="https://github.com/user-attachments/assets/95bf3627-5dde-4f27-98a0-3c15b817d2b4" />
- we can check the packet 134 sends a Tree Connect Request to the network resource \\10.0.0.133\IPC$. There is a endpoint that refer to network share.
+we can check the packet 134 sends a Tree Connect Request to the network resource \\10.0.0.133\IPC$. There is a endpoint that refer to network share.
 
 > IPC$
 
@@ -51,5 +51,7 @@ Q6: We must identify the network share used to communicate between the two machi
 Q7: Now that we have a clearer picture of the attacker's activities on the compromised machine, it's important to identify any further lateral movement. What is the hostname of the second machine the attacker targeted to pivot within our network?
 
 When I use filter to filt ntlm challenge, beside 10.0.0.133 is a first pivot, I can see another ip is 10.0.0.131. So I check this hostname and find the answer.
+
 <img width="576" height="198" alt="image" src="https://github.com/user-attachments/assets/80767a91-f53d-4aa5-9093-a28ccd688ba6" />
+
 > Marketing-PC
