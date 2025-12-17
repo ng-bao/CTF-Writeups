@@ -34,5 +34,22 @@ in Q1, we already find that is PSEXESVC.exe
 
 ---
 Q5: We need to know how the attacker installed the service on the compromised machine to understand the attacker's lateral movement tactics. This can help identify other affected systems. Which network share was used by PsExec to install the service on the target machine?
+<img width="1211" height="159" alt="image" src="https://github.com/user-attachments/assets/2cd67c08-e060-4751-bb85-2047880fc626" />
+By analyzing the network traffic in the provided pcap file, we can clearly see that in packet 144, the attacker device sended the request to upload PSEXESVC.exe in victim device, and before this packet we have packet 138 sends a Tree Connect Request to the network resource \\10.0.0.133\ADMIN$. This explicitly identifies ADMIN$ as the network share utilized for the initial access.
 
-To install a executive file to control device, we must have administrator rights. So PsExec must use ADMIN$ to install the service on target machine 
+> ADMIN$
+
+---
+Q6: We must identify the network share used to communicate between the two machines. Which network share did PsExec use for communication?
+
+<img width="1133" height="52" alt="image" src="https://github.com/user-attachments/assets/95bf3627-5dde-4f27-98a0-3c15b817d2b4" />
+ we can check the packet 134 sends a Tree Connect Request to the network resource \\10.0.0.133\IPC$. There is a endpoint that refer to network share.
+
+> IPC$
+
+---
+Q7: Now that we have a clearer picture of the attacker's activities on the compromised machine, it's important to identify any further lateral movement. What is the hostname of the second machine the attacker targeted to pivot within our network?
+
+When I use filter to filt ntlm challenge, beside 10.0.0.133 is a first pivot, I can see another ip is 10.0.0.131. So I check this hostname and find the answer.
+<img width="576" height="198" alt="image" src="https://github.com/user-attachments/assets/80767a91-f53d-4aa5-9093-a28ccd688ba6" />
+> Marketing-PC
