@@ -23,4 +23,14 @@ Q2: During the investigation, it's essential to determine the account targeted b
 We could clearly see that host 87.96.21.84 (attacker) connected over port 1433 (SQL Server default) and initiated communication. So I checked in event log and saw that
 <img width="1273" height="326" alt="image" src="https://github.com/user-attachments/assets/d6649c5f-e572-4ea1-8200-d7ad277e2e79" />
 
-The event ID 1
+There are many events from MSSQLSERVER .The event ID 18454 means login successfull so I checked in Eventdata and found account username.
+<img width="1209" height="185" alt="image" src="https://github.com/user-attachments/assets/a9fd3109-d556-41a3-98e8-487b0779741e" />
+
+> sa
+
+---
+Q3: We need to determine if the attacker succeeded in gaining access. Can you provide the correct password discovered by the attacker?
+
+After 
+
+
