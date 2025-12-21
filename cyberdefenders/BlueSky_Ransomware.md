@@ -1,8 +1,7 @@
 # BlueSky Ransomware 
 <img width="1074" height="296" alt="image" src="https://github.com/user-attachments/assets/87b616fd-0f74-40bb-8c4e-ef03ffa720fc" />
-## Solve
 
----
+## Solve
 Q1: Knowing the source IP of the attack allows security teams to respond to potential threats quickly. Can you identify the source IP responsible for potential port scanning activity?
 
 I researched port scanning and found the following results.
@@ -20,7 +19,7 @@ Q2: During the investigation, it's essential to determine the account targeted b
 <img width="1698" height="173" alt="image" src="https://github.com/user-attachments/assets/efccb236-b103-4bc2-88ba-185711d048ae" />
 
 
-We could clearly see that host 87.96.21.84 (attacker) connected over port 1433 (SQL Server default) and initiated communication. So I checked in event log and saw that
+We could clearly see that host 87.96.21.84 (attacker) tried connect over port 1433 (SQL Server default) and initiate communication. So I checked in event log and saw that
 <img width="1273" height="326" alt="image" src="https://github.com/user-attachments/assets/d6649c5f-e572-4ea1-8200-d7ad277e2e79" />
 
 There are many events from MSSQLSERVER .The event ID 18454 means login successfull so I checked in Eventdata and found account username.
@@ -31,6 +30,6 @@ There are many events from MSSQLSERVER .The event ID 18454 means login successfu
 ---
 Q3: We need to determine if the attacker succeeded in gaining access. Can you provide the correct password discovered by the attacker?
 
-After 
+Cause I can see many events from MSSQLSERVER, I thinks it maybe a brutal force attack. I checked in 
 
 
