@@ -30,6 +30,12 @@ There are many events from MSSQLSERVER .The event ID 18454 means login successfu
 ---
 Q3: We need to determine if the attacker succeeded in gaining access. Can you provide the correct password discovered by the attacker?
 
-Cause I can see many events from MSSQLSERVER, I thinks it maybe a brutal force attack. I checked in 
+I saw the attacker communicating with the SQL Server via TDS. So I filter TDS for search convinient. We could clearly see that many burst of packets like this sent to SQL server.
+<img width="1781" height="122" alt="image" src="https://github.com/user-attachments/assets/4b38e597-619d-43b1-8fe7-23da65252015" />
+
+I think it was a brute force attack, I tried to find the packet which contain correct password and find this.
+<img width="1211" height="130" alt="image" src="https://github.com/user-attachments/assets/284a012d-3f9c-4185-8b5a-c83a65c414d0" />
+
+
 
 
