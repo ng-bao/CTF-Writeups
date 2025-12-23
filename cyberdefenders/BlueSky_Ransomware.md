@@ -36,6 +36,13 @@ I saw the attacker communicating with the SQL Server via TDS. So I filter TDS fo
 I think it was a brute force attack, I tried to find the packet which contain correct password and find this.
 <img width="1211" height="130" alt="image" src="https://github.com/user-attachments/assets/284a012d-3f9c-4185-8b5a-c83a65c414d0" />
 
+Look insigh packet 2641 and we can find the password
+<img width="992" height="438" alt="image" src="https://github.com/user-attachments/assets/68094760-8989-4b50-89c8-8d1d4d203175" />
+> cyb3rd3f3nd3r$
+
+---
+Q4: 
+
 
 
 
