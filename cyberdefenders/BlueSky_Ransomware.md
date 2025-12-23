@@ -41,8 +41,17 @@ Look insigh packet 2641 and we can find the password
 > cyb3rd3f3nd3r$
 
 ---
-Q4: 
+Q4: Attackers often change some settings to facilitate lateral movement within a network. What setting did the attacker enable to control the target host further and execute further commands?
 
+After login into SQL server, attacker run this command like this
+<img width="1022" height="444" alt="image" src="https://github.com/user-attachments/assets/1c348a29-c6d0-4e89-99f4-f59cf9570d26" />
+
+It sets the configuration value of xp_cmdshell to 1 which allow attacker to run any CMD command with the privileges of the SQL Service account.
+
+> xp_cmdshell
+
+---
+Q5: Process injection is often used by attackers to escalate privileges within a system. What process did the attacker inject the C2 into to gain administrative privileges?
 
 
 
