@@ -47,11 +47,15 @@ After login into SQL server, attacker run this command like this
 <img width="1022" height="444" alt="image" src="https://github.com/user-attachments/assets/1c348a29-c6d0-4e89-99f4-f59cf9570d26" />
 
 It sets the configuration value of xp_cmdshell to 1 which allow attacker to run any CMD command with the privileges of the SQL Service account.
-
 > xp_cmdshell
 
 ---
 Q5: Process injection is often used by attackers to escalate privileges within a system. What process did the attacker inject the C2 into to gain administrative privileges?
 
+When check in Event Viewer, we could see multiple PowerShell processes like this
+<img width="1266" height="415" alt="image" src="https://github.com/user-attachments/assets/a9ae65b9-ab1c-40a0-9adb-3017af07189e" />
+
+Look at the HostName: MSFConsole. This stands for MetaSploit Framework Console. The attacker is controlling this computer via a session in Metasploit—the most popular hacking toolkit used for penetration testing and malware deployment. Its also have the same HostApplication: winlogon.exe. This mean attacker injected the malicious payload directly into the critical system process: winlogon.exe because it has the highest level of authority so it impossible to kill via Task Manager or trigger Antivirus.
+> winlogon.exe  
 
 
