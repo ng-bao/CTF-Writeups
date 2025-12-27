@@ -60,5 +60,16 @@ Look at the HostName: MSFConsole. This stands for MetaSploit Framework Console. 
 
 ---
 Q6: Following privilege escalation, the attacker attempted to download a file. Can you identify the URL of this file downloaded?
+ 
+I applied filter for http and focus on GET method. And the first file that the attacker dowloaded was checking.ps1 via URL: http://87.96.21.84/checking.ps1
+<img width="1199" height="34" alt="image" src="https://github.com/user-attachments/assets/eb62e076-3fbc-4c2f-a0e8-855d85c4ffa3" />
 
-I used filter to filter 
+> http://87.96.21.84/checking.ps1
+
+---
+Q7: Understanding which group Security Identifier (SID) the malicious script checks to verify the current user's privileges can provide insights into the attacker's intentions. Can you provide the specific Group SID that is being checked?
+
+<img width="984" height="48" alt="image" src="https://github.com/user-attachments/assets/4cd947a1-4670-48d3-8b17-3a8fe9073fa0" />
+
+Following the picture and Q6, the attacker downloaded a file named checking.ps1 so I used follow HTTP stream to analyze the response packet and know that purpose of this file is check
+
