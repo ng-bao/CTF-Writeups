@@ -104,4 +104,9 @@ Based on the analysis of the second file (del.ps1), its primary function is to k
 <img width="1346" height="307" alt="image" src="https://github.com/user-attachments/assets/6de91841-fba6-40e5-8342-2cea6eadcbe2" />
 > TA0005
 ---
+Q12: What's the invoked PowerShell script used by the attacker for dumping credentials?
 
+We could clearly see that one of the scripts which the attacker downloaded quite literally contains the word “dump”, and it is the correct answer to Question 12.
+
+> Invoke-PowerDump.ps1
+---
