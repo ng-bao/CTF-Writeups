@@ -7,7 +7,7 @@ Q1: Knowing the source IP of the attack allows security teams to respond to pote
 I researched port scanning and found the following results.
 <img width="992" height="651" alt="image" src="https://github.com/user-attachments/assets/32af942e-cffb-49d5-abd4-412fa58d11c8" />
 
-Focus on port scanning type 2, it has some keywords like [SYN], [ACK, SYN], [ACK]. They resemble the packets we captured.
+Bases on port scanning type 2, it has some keywords like [SYN], [ACK, SYN], [ACK]. They resemble the packets we captured.
 <img width="1890" height="514" alt="image" src="https://github.com/user-attachments/assets/493e26da-e377-46ce-9f0e-b53c643e27ba" />
 
 As we can see, host 87.96.21.84 continuously sent [SYN] packets to various ports on 87.96.21.81. So host 87.96.21.84 is source IP responsible for potential port scanning activity
@@ -71,5 +71,37 @@ Q7: Understanding which group Security Identifier (SID) the malicious script che
 
 <img width="984" height="48" alt="image" src="https://github.com/user-attachments/assets/4cd947a1-4670-48d3-8b17-3a8fe9073fa0" />
 
-Following the picture and Q6, the attacker downloaded a file named checking.ps1 so I used follow HTTP stream to analyze the response packet and know that purpose of this file is check
+Following the picture and Q6, the attacker downloaded a file named checking.ps1 so I used follow HTTP stream to analyze the response packet and know that one of the purpose of this file is a privilege escalation checker. Specifically, I observed the specific Group SID that is being checked in this scrip is S-1-5-32-544.
+<img width="1034" height="38" alt="image" src="https://github.com/user-attachments/assets/35f64e01-36d7-442f-81d5-6314c73d1881" />
+> S-1-5-32-544
+
+---
+Q8: Windows Defender plays a critical role in defending against cyber threats. If an attacker disables it, the system becomes more vulnerable to further attacks. What are the registry keys used by the attacker to disable Windows Defender functionalities? Provide them in the same order found.
+
+In addition to checking privileges, checking.ps1 also attempts to disable Windows Defender functionalities via Disable-WindowsDefender function that contain some registry keys.
+<img width="966" height="725" alt="image" src="https://github.com/user-attachments/assets/d71cffac-4ab8-44f2-8544-0a7216c1d9c7" />
+
+> DisableAntiSpyware,DisableRoutinelyTakingAction,DisableRealtimeMonitoring,SubmitSamplesConsent,SpynetReporting
+---
+Q9: Can you determine the URL of the second file downloaded by the attacker?
+
+We could clearly see that the URL of the second file downloaded by the attacker is http://87.96.21.84/del.ps1.
+
+> http://87.96.21.84/del.ps1
+---
+Q10: Identifying malicious tasks and understanding how they were used for persistence helps in fortifying defenses against future attacks. What's the full name of the task created by the attacker to maintain persistence?
+
+Focus on this function on checking.ps1
+<img width="1228" height="149" alt="image" src="https://github.com/user-attachments/assets/586bbeb6-b50e-49e3-9543-82b3e461c632" />
+
+First, the attacker tried to download a file named del.ps1 (the second file the attacker downloaded) which has function is stop some processes. Next step, attaker created a task named schtasks.exe to run del.ps1 and hide it into \Microsoft\Windows\MUI\LPupdate. The executable is scheduled to run every 4 hours.
+
+> \Microsoft\Windows\MUI\LPupdate
+---
+Q11: Based on your analysis of the second malicious file, What is the MITRE ID of the main tactic the second file tries to accomplish?
+
+Based on the analysis of the second file (del.ps1), its primary function is to kill system monitoring processes to evade detection. So I searched for a MITRE ID related to 'evade detection' and found this.
+<img width="1346" height="307" alt="image" src="https://github.com/user-attachments/assets/6de91841-fba6-40e5-8342-2cea6eadcbe2" />
+> TA0005
+---
 
