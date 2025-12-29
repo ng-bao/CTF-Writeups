@@ -116,7 +116,19 @@ Based on the picture of Q10, We can see at line 3 of this function, the attacker
 
 > hashes.txt
 ---
-Q14: 
+Q14: Knowing the hosts targeted during the attacker's reconnaissance phase, the security team can prioritize their remediation efforts on these specific hosts. What's the name of the text file containing the discovered hosts?
+
+Like question 12, one of the scripts which the attacker downloaded quite literally contains the word “host”. 
 
 ---
+Q15: After hash dumping, the attacker attempted to deploy ransomware on the compromised host, spreading it to the rest of the network through previous lateral movement activities using SMB. You’re provided with the ransomware sample for further analysis. By performing behavioral analysis, what’s the name of the ransom note file?
+
+Among the files downloaded by the attacker, there was a highly suspicious executable named javaw.exe, so I scanned it with VirusTotal
+<img width="466" height="64" alt="image" src="https://github.com/user-attachments/assets/679ec82d-c12f-4720-a105-88547f327626" />
+
+based on the tool's results, the file is ransomware. I tried to run this in sandbox environment to analyze Behavior.
 <img width="1509" height="923" alt="image" src="https://github.com/user-attachments/assets/b074b42f-928a-411d-a04e-357e8bc279a5" />
+
+We can see the ransom note file in this.
+
+> \# DECRYPT FILES BLUESKY # 
