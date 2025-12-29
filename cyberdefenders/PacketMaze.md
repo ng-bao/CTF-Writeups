@@ -11,6 +11,22 @@ I applied a filter for the FTP protocol. At we can see, the ip 192.168.1.26 is t
 ---
 Q2: What is the IPv6 address of the DNS server used by 192.168.1.26?
 
-I applied a filter for the DNS protocol. We can see client 192.168.1.26 communicating with host 192.168.1.20. Starting from packet 474, the two machines switch to communicating over IPv6., so I checked the MAC address of host 192.168.1.20 to find its IPv6 address.
+I applied a filter for the DNS protocol. We can see client 192.168.1.26 communicating with host 192.168.1.20. Starting from packet 474, the two machines switch to communicating over IPv6., so I cross-referenced the host's MAC address to identify its corresponding IPv6 address..
 
 > fe80::c80b:adff:feaa:1db7
+---
+Q3: What domain is the user looking up in packet 15174?
+
+Looking at the tag queries, we could see the domain name.
+
+<img width="388" height="141" alt="image" src="https://github.com/user-attachments/assets/91cea6d5-e5ab-42e0-9104-6494f72ecf40" />
+
+> www.7-zip.org
+---
+Q4: How many UDP packets were sent from 192.168.1.26 to 24.39.217.246?
+
+I applied the following filter: `udp && ip.src == 192.168.1.26 && ip.dst == 24.39.217.246` and counted the display packets.
+<img width="1067" height="281" alt="image" src="https://github.com/user-attachments/assets/a0832e9a-be36-405f-a0c2-ed9e62eb86a5" />
+
+> 10
+---
