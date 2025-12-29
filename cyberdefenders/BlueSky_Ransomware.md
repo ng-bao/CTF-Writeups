@@ -118,8 +118,8 @@ Based on the picture of Q10, We can see at line 3 of this function, the attacker
 ---
 Q14: Knowing the hosts targeted during the attacker's reconnaissance phase, the security team can prioritize their remediation efforts on these specific hosts. What's the name of the text file containing the discovered hosts?
 
-Like question 12, one of the scripts which the attacker downloaded quite literally contains the word “host”. 
-
+Like question 12, one of the scripts which the attacker downloaded quite literally contains the word “host”. Looking at the content of this file, we can see host's ip.
+> extracted_hosts.txt
 ---
 Q15: After hash dumping, the attacker attempted to deploy ransomware on the compromised host, spreading it to the rest of the network through previous lateral movement activities using SMB. You’re provided with the ransomware sample for further analysis. By performing behavioral analysis, what’s the name of the ransom note file?
 
@@ -131,4 +131,10 @@ based on the tool's results, the file is ransomware. I tried to run this in sand
 
 We can see the ransom note file in this.
 
-> \# DECRYPT FILES BLUESKY # 
+> \# DECRYPT FILES BLUESKY #
+---
+Q16: In some cases, decryption tools are available for specific ransomware families. Identifying the family name can lead to a potential decryption solution. What's the name of this ransomware family?
+
+Look at the first picture in question 15, the ransomware family is bluesky.
+
+> bluesky
