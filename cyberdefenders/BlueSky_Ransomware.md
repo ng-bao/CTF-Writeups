@@ -61,8 +61,6 @@ Look at the HostName: MSFConsole. This stands for MetaSploit Framework Console. 
 Q6: Following privilege escalation, the attacker attempted to download a file. Can you identify the URL of this file downloaded?
  
 I applied filter for http and focus on GET method. And the first file that the attacker dowloaded was checking.ps1 via URL: http://87.96.21.84/checking.ps1
-<img width="1199" height="34" alt="image" src="https://github.com/user-attachments/assets/eb62e076-3fbc-4c2f-a0e8-855d85c4ffa3" />
-
 > http://87.96.21.84/checking.ps1
 
 ---
