@@ -1,4 +1,3 @@
-# BlueSky Ransomware 
 <img width="1074" height="296" alt="image" src="https://github.com/user-attachments/assets/87b616fd-0f74-40bb-8c4e-ef03ffa720fc" />
 
 ## Solve
@@ -116,3 +115,8 @@ Based on the picture of Q10, We can see at line 3 of this function, the attacker
 <img width="919" height="683" alt="image" src="https://github.com/user-attachments/assets/8c819e0f-c096-4f34-a2a2-081350211488" />
 
 > hashes.txt
+---
+Q14: 
+
+---
+<img width="1509" height="923" alt="image" src="https://github.com/user-attachments/assets/b074b42f-928a-411d-a04e-357e8bc279a5" />
