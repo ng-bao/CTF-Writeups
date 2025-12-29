@@ -7,7 +7,7 @@ Q1: Knowing the source IP of the attack allows security teams to respond to pote
 I researched port scanning and found the following results.
 <img width="992" height="651" alt="image" src="https://github.com/user-attachments/assets/32af942e-cffb-49d5-abd4-412fa58d11c8" />
 
-Bases on port scanning type 2, it has some keywords like [SYN], [ACK, SYN], [ACK]. They resemble the packets we captured.
+Based on port scanning type 2, it has some keywords like [SYN], [ACK, SYN], [ACK]. They resemble the packets we captured.
 <img width="1890" height="514" alt="image" src="https://github.com/user-attachments/assets/493e26da-e377-46ce-9f0e-b53c643e27ba" />
 
 As we can see, host 87.96.21.84 continuously sent [SYN] packets to various ports on 87.96.21.81. So host 87.96.21.84 is source IP responsible for potential port scanning activity
@@ -110,3 +110,9 @@ We could clearly see that one of the scripts which the attacker downloaded quite
 
 > Invoke-PowerDump.ps1
 ---
+Q13: Understanding which credentials have been compromised is essential for assessing the extent of the data breach. What's the name of the saved text file containing the dumped credentials?
+
+Based on the picture of Q10, We can see at line 3 of this function, the attacker downloaded a file named ichigo-lite.ps1. Analyzing this file, we can see it downloaded some files, one of them is Invoke-PowerDump.ps1. So I tried to decode all scripts encoded in base64 and found this.
+<img width="919" height="683" alt="image" src="https://github.com/user-attachments/assets/8c819e0f-c096-4f34-a2a2-081350211488" />
+
+> hashes.txt
