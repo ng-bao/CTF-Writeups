@@ -57,4 +57,6 @@ Q8:
 Q9: Which country is the manufacturer of the FTP server’s MAC address registered in?
 
 We can easily identify the MAC address of FTP server as 08:00:27:a6:1f:86. Then, I used the MAC Lookup tool to find the answer.
+<img width="656" height="157" alt="image" src="https://github.com/user-attachments/assets/37330ebc-b3cc-4abf-9802-9df5d3fa0af8" />
+
 > United States
