@@ -51,8 +51,13 @@ Q7: What is the ephemeral public key provided by the server during the TLS hands
 I found the packet containing this session ID by using the filter: 'tls.handshake.session_id == da4a0000342e4b73459d7360b4bea971cc303ac18d29b99067e46d16cc07f4ff' and located the public key inside.
 > 04edcc123af7b13e90ce101a31c2f996f471a7c8f48a1b81d765085f548059a550f3f4f62ca1f0e8f74d727053074a37bceb2cbdc7ce2a8994dcd76dd6834eefc5438c3b6da929321f3a1366bd14c877cc83e5d0731b7f80a6b80916efd4a23a4d
 ---
-Q8:
+Q8:What is the first TLS 1.3 client random that was used to establish a connection with protonmail.com?
 
+Based on keywords TLS 1.3 and protonmail.com, I applied the following filter `tls && frame contains "protonmail.com"`.
+<img width="1281" height="231" alt="image" src="https://github.com/user-attachments/assets/58891839-8d28-4471-a370-b71e77d230f1" />
+
+As we can see, the first TLS 1.3 packet that was used to establish a connection with protonmail.com is packet 17992. Then, I checked the random value to get the answer.
+> 24e92513b97a0348f733d16996929a79be21b0b1400cd7e2862a732ce7775b70
 ---
 Q9: Which country is the manufacturer of the FTP server’s MAC address registered in?
 
@@ -60,3 +65,5 @@ We can easily identify the MAC address of FTP server as 08:00:27:a6:1f:86. Then,
 <img width="656" height="157" alt="image" src="https://github.com/user-attachments/assets/37330ebc-b3cc-4abf-9802-9df5d3fa0af8" />
 
 > United States
+---
+Q10: What time was a non-standard folder created on the FTP server on the 20th of April?
