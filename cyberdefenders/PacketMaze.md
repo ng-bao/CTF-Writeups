@@ -30,3 +30,18 @@ I applied the following filter: `udp && ip.src == 192.168.1.26 && ip.dst == 24.3
 
 > 10
 ---
+Q5: What is the MAC address of the system under investigation in the PCAP file?
+
+We have identified the host under investigation as 192.168.1.26 in question 1. Therefore, we can easily check its MAC address in any packet where the source or destination is 192.168.1.26
+
+<img width="1076" height="137" alt="image" src="https://github.com/user-attachments/assets/f9909751-bbad-453a-9bb0-60dcdeb89296" />
+
+in this packet, the host 192.168.1.26 is destination.
+> c8:09:a8:57:47:93
+---
+Q6: What was the camera model name used to take picture 20210429_152157.jpg?
+
+Just download this picture and use ExifTool to check the metadata to get the answer.
+<img width="534" height="30" alt="image" src="https://github.com/user-attachments/assets/1c3f8c25-6466-445c-ab8c-81f3126cc585" />
+
+> LM-Q725K
