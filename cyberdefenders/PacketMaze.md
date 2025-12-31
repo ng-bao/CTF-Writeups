@@ -45,3 +45,16 @@ Just download this picture and use ExifTool to check the metadata to get the ans
 <img width="534" height="30" alt="image" src="https://github.com/user-attachments/assets/1c3f8c25-6466-445c-ab8c-81f3126cc585" />
 
 > LM-Q725K
+---
+Q7: What is the ephemeral public key provided by the server during the TLS handshake in the session with the session ID: ?da4a0000342e4b73459d7360b4bea971cc303ac18d29b99067e46d16cc07f4ff
+
+I found the packet containing this session ID by using the filter: 'tls.handshake.session_id == da4a0000342e4b73459d7360b4bea971cc303ac18d29b99067e46d16cc07f4ff' and located the public key inside.
+> 04edcc123af7b13e90ce101a31c2f996f471a7c8f48a1b81d765085f548059a550f3f4f62ca1f0e8f74d727053074a37bceb2cbdc7ce2a8994dcd76dd6834eefc5438c3b6da929321f3a1366bd14c877cc83e5d0731b7f80a6b80916efd4a23a4d
+---
+Q8:
+
+---
+Q9: Which country is the manufacturer of the FTP server’s MAC address registered in?
+
+We can easily identify the MAC address of FTP server as 08:00:27:a6:1f:86. Then, I used the MAC Lookup tool to find the answer.
+> United States
