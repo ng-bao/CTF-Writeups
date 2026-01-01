@@ -67,3 +67,26 @@ We can easily identify the MAC address of FTP server as 08:00:27:a6:1f:86. Then,
 > United States
 ---
 Q10: What time was a non-standard folder created on the FTP server on the 20th of April?
+
+To list folder on the FTP server, we use the LIST command. I have a reseach about this and found that.
+<img width="837" height="577" alt="image" src="https://github.com/user-attachments/assets/c830eb1e-6156-4b42-a5e8-d2694a9970f6" />
+
+Based on this paragraph, the data transfer is over the data connection. So I applied the filter for `ftp-data` to find the result of this command and I found this packet.
+<img width="1191" height="29" alt="image" src="https://github.com/user-attachments/assets/af5aa444-98ba-4ec9-b068-e383ff85a15e" />
+
+By using the 'Follow TCP Stream' feature, we can find the time on the 20th of April.
+<img width="843" height="247" alt="image" src="https://github.com/user-attachments/assets/1e1f1dd7-2b7c-447b-952d-5e1672d51be2" 
+
+> 17:53
+---
+Q11: What URL was visited by the user and connected to the IP address 104.21.89.171?
+
+This question requires to find the domain name of IP 104.21.89.171. We have the keywords like URL and IP address, so I applied the following filter `ip.addr == 104.21.89.171 && http` and saw that.
+<img width="1312" height="83" alt="image" src="https://github.com/user-attachments/assets/ee49277f-3244-438d-9781-13680187a54b" />
+
+Look into packet 26257. To identify the URL connected to IP 104.21.89.171, I analyzed the traffic using the 'Follow HTTP Stream' feature. The first request packet showed the header Host: dfir.science sent via unencrypted text, which proves the protocol was HTTP.
+<img width="1906" height="510" alt="image" src="https://github.com/user-attachments/assets/88fa8f62-b1ac-4cf6-b72f-83fc0bb20cdc" />
+
+> http://dfir.science/
+
+
