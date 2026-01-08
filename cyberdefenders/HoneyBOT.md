@@ -16,4 +16,16 @@ based on question 1, the target's IP address is 192.150.11.111 and this also is 
 > 192.150.11.111
 
 ---
-Q3:
+Q3: Provide the country code for the attacker's IP address (a.k.a geo-location).
+
+Just use the ip-lookup tool via followìng the below link to find the answer.
+`cmd
+https://whatismyipaddress.com/ip-lookup
+`
+<img width="1037" height="623" alt="image" src="https://github.com/user-attachments/assets/c2282125-0a03-4528-8b2d-4b87b5bb4b1c" />
+
+> US.
+
+---
+Q4: How many TCP sessions are present in the captured traffic?
+
