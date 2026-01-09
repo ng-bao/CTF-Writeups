@@ -24,8 +24,25 @@ https://whatismyipaddress.com/ip-lookup
 `
 <img width="1037" height="623" alt="image" src="https://github.com/user-attachments/assets/c2282125-0a03-4528-8b2d-4b87b5bb4b1c" />
 
-> US.
+> US
 
 ---
 Q4: How many TCP sessions are present in the captured traffic?
+
+Conversations from the Statistics menu gives us this:
+<img width="1662" height="217" alt="image" src="https://github.com/user-attachments/assets/eda98fc8-6739-43da-9c33-bc7d849378f0" />
+
+> 5
+---
+Q5: How long did it take to perform the attack (in seconds)?
+
+Use Second Since First Captured Packet format in view menu and see the final packet.
+<img width="1268" height="34" alt="image" src="https://github.com/user-attachments/assets/0f2769d5-d990-48de-a86b-7a9a128a240f" />
+
+> 16
+---
+Q6: 
+
+---
+Q7: Which protocol was used to carry over the exploit?
 
