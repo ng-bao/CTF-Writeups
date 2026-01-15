@@ -46,3 +46,20 @@ Q6:
 ---
 Q7: Which protocol was used to carry over the exploit?
 
+By analyze the internet traffic, we can see the attacker established a connect to victim machine(HoneyBot) via SMB protocol.
+<img width="1918" height="284" alt="image" src="https://github.com/user-attachments/assets/1d8c4068-bfad-4b1d-b600-8ff1f64f3ab3" />
+
+> SMB
+---
+Q8: Which protocol did the attacker use to download additional malicious files to the target system?
+
+By using Zui, this tool is detected a suspicious file like this.
+<img width="1289" height="394" alt="image" src="https://github.com/user-attachments/assets/a39e8071-549a-40dc-9ec9-4cad8132247e" />
+
+This is a PE(Portable Executable) is sended via FTP-data. Determined by `source: "FTP_DATA"`.
+> FTP
+---
+Q9: What is the name of the downloaded malware?
+
+We knew that the attacker is downloaded a malicious file via FTP protocol. So I checked `_path: ftp` and saw `arg: "ftp://98.114.205.102/ssms.exe"`. This mean the machine 98.114.205.102(attacker) downloaded a file name ssms.exe. A executable file which matched the clue we found in question 8.
+> ssms.exe
