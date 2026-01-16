@@ -19,7 +19,7 @@ based on question 1, the target's IP address is 192.150.11.111 and this also is 
 Q3: Provide the country code for the attacker's IP address (a.k.a geo-location).
 
 Just use the ip-lookup tool via followìng the below link to find the answer.
-`cmd
+`
 https://whatismyipaddress.com/ip-lookup
 `
 <img width="1037" height="623" alt="image" src="https://github.com/user-attachments/assets/c2282125-0a03-4528-8b2d-4b87b5bb4b1c" />
@@ -41,8 +41,15 @@ Use Second Since First Captured Packet format in view menu and see the final pac
 
 > 16
 ---
-Q6: 
+Q6: Provide the CVE number of the exploited vulnerability.
 
+While I'm analyzingthe internet traffic, I found some suspicious packets like this.
+<img width="1525" height="135" alt="image" src="https://github.com/user-attachments/assets/fdd18918-7ff1-433d-b22e-5bfb52e5fbf6" />
+
+Focus on packet 33,  there is DsRoleUpgradeDownlevelServer was send via DSSETUP(Directory Service Setup Remote Protocol). I searched on google with this keyword.
+<img width="1193" height="332" alt="image" src="https://github.com/user-attachments/assets/0c5dbced-c4f2-4827-8c6d-79b75cf260c0" />
+
+> CVE-2003-0533
 ---
 Q7: Which protocol was used to carry over the exploit?
 
@@ -82,6 +89,15 @@ I checked this hash on VirusTotal and it was flagged as malicious.
 <img width="1638" height="218" alt="image" src="https://github.com/user-attachments/assets/d79a2dc8-3382-4d71-ac44-a247269c2f58" />
 
 And then, I just see history in details and get the answer.
+<img width="690" height="149" alt="image" src="https://github.com/user-attachments/assets/3131d57b-c554-4a9d-a804-13911ce8866a" />
+
 > 2007-06-27
 ---
 Q12: What is the key used to encode the shellcode?
+
+---
+Q13: What is the port number the shellcode binds to?
+
+<img width="711" height="730" alt="image" src="https://github.com/user-attachments/assets/57b450ee-1cc7-406c-9a80-3aab83eab2e9" />
+
+
