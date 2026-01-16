@@ -99,5 +99,5 @@ Q12: What is the key used to encode the shellcode?
 Q13: What is the port number the shellcode binds to?
 
 <img width="711" height="730" alt="image" src="https://github.com/user-attachments/assets/57b450ee-1cc7-406c-9a80-3aab83eab2e9" />
-
+In question 6, 
 
