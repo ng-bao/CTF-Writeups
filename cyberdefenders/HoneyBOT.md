@@ -95,9 +95,24 @@ And then, I just see history in details and get the answer.
 ---
 Q12: What is the key used to encode the shellcode?
 
+The key used to encode shellcode is typically a random byte chosen from a range of possible values. This random byte is XORed with the shellcode byte to produce an encoded byte. The process of encoding shellcode involves reading the shellcode in a specific format, such as \xFF\xEE\xDD, and applying the XOR operation to each byte. This method helps to obfuscate the shellcode, making it harder to detect by antivirus engines or other security software. 
+By follow tcp steam at packet which call DsRoleUpgradeDownlevelServer function, I can see shellcode the attacker was inject into to exploit a vulnerability of this function. I saw many value like 0x90. In Intel x86 assembly, the hex code 0x90 represents the NOP(No Operation) instruction. I think because the attacker cannot determine the precise EIP address, they inject a NOP sled. This ensures the execution flow 'slides' into the shellcode. So when I decode hex data to assembly, I will examine the shellcode after the NOP sled.
+<img width="946" height="298" alt="image" src="https://github.com/user-attachments/assets/5ac3e8a4-dfe8-4d6f-915a-2ea4f90fe091" />
+
+in offset 49f, It performs a XOR operation with 0x99. So 0x99 is a answer for this question
+> 0x99
 ---
 Q13: What is the port number the shellcode binds to?
 
+. And then, I used scdbg to analyze and see that:
 <img width="711" height="730" alt="image" src="https://github.com/user-attachments/assets/57b450ee-1cc7-406c-9a80-3aab83eab2e9" />
-In question 6, 
 
+As we can see, this shellcode binds to port 1957 and it is the answer.
+> 1957
+---
+Q14: The shellcode used a specific technique to determine its location in memory. What is the OS file being queried during this process?
+
+Checking this malicious file in VirusTotal, I observed that it imports the kernel32.dll library. I don't know what this is, then I do some research on it and know that the Kernel32.dll file is an essential component of the Windows operating system. It is a dynamic link library file that contains various functions and resources required for the proper functioning of the Windows kernel. So this is a OS file we need to find.
+<img width="902" height="441" alt="image" src="https://github.com/user-attachments/assets/dbb16dd0-4e8a-4ff6-a272-d4075581f9be" />
+
+> kernel32.dll
