@@ -29,5 +29,5 @@ We can see the command return a base64 code `ZmxhZ3t0aDFzXzFzX3RoM18xc3Rfc3Q0ZzM
 <img width="1497" height="563" alt="image" src="https://github.com/user-attachments/assets/085b992c-b88e-4459-bc73-05ecc80a6e40" />
 > flag{th1s_1s_th3_1st_st4g3!!}
 
-Next to the second clue, 
+Next to the second clue: "The crash happened when she was trying to draw something.".
 
