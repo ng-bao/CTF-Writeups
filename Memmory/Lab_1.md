@@ -27,7 +27,6 @@ So I use the consoles plugin to see more detail about this command.
 <img width="903" height="200" alt="image" src="https://github.com/user-attachments/assets/e79306da-b79d-44d6-b84d-cd4cb4691bae" />
 
 We can see the command return a base64 code `ZmxhZ3t0aDFzXzFzX3RoM18xc3Rfc3Q0ZzMhIX0=`. Then I tried to decode this and get the first flag.
-
 <img width="1497" height="563" alt="image" src="https://github.com/user-attachments/assets/085b992c-b88e-4459-bc73-05ecc80a6e40" />
 > flag{th1s_1s_th3_1st_st4g3!!}
 
@@ -44,4 +43,10 @@ vol2.exe -f MemoryDump_Lab1.raw --profile=Win7SP1x64_23418 memdump -P 2424 -D .
 In RAM, an image doesn't exist as a complete file, but rather as a continuous sequence of pixels. Paint holds these pixels in memory to display them on the screen. By adjusting the Width in GIMP, we are helping the software determine after how many pixels it should wrap to the next line to form a complete picture. So I will use GIMP(GNU Image Manipulation Program) and renamed this file to 2424.data to GIMP can read it.
 <img width="740" height="782" alt="image" src="https://github.com/user-attachments/assets/ed6d18ee-9664-400e-8327-53117fa54d65" />
 
-After several minutes, I finally dialed in the parameters that allowed me to render the drawn content.
+After several minutes, I finally dialed in the parameters that allowed me to render the drawn content. But it has a little bit problem, the picture is inverted vertically and mirrored horizontally, I solved it by apply the Flip vertically function to correct the photo and get the second flag.
+<img width="1216" height="942" alt="image" src="https://github.com/user-attachments/assets/78583e76-8589-4930-be02-49769edb9ad6" />
+> flag{Good_Boy_good_girl_}
+
+To the final clue, we have to recover all her important files. And
+
+
