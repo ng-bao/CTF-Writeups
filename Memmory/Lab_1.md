@@ -47,6 +47,6 @@ After several minutes, I finally dialed in the parameters that allowed me to ren
 <img width="1216" height="942" alt="image" src="https://github.com/user-attachments/assets/78583e76-8589-4930-be02-49769edb9ad6" />
 > flag{Good_Boy_good_girl_}
 
-To the final clue, we have to recover all her important files. And
+To the final clue, we have to recover all her important files. And to recover it, I 
 
 
