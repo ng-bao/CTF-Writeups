@@ -47,6 +47,13 @@ After several minutes, I finally dialed in the parameters that allowed me to ren
 <img width="1216" height="942" alt="image" src="https://github.com/user-attachments/assets/78583e76-8589-4930-be02-49769edb9ad6" />
 > flag{Good_Boy_good_girl_}
 
-To the final clue, we have to recover all her important files. And to recover it, I 
+To the final clue, we have to recover all her important files. Before that, while I was checking processes list, I saw WinRAR.exe process
+<img width="1364" height="62" alt="image" src="https://github.com/user-attachments/assets/4a05c5a8-84f9-40a2-b217-97b5aea32903" />
 
+Therefor, I used the cmdline to display process command-line arguments
+```
+vol2.exe -f MemoryDump_Lab1.raw --profile=Win7SP1x64_23418 cmdline
+```
+<img width="1455" height="74" alt="image" src="https://github.com/user-attachments/assets/840264b0-343b-4885-9145-0a340f0b0412" />
 
+We have a file named Important.rar. It seem
