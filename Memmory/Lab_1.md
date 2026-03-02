@@ -30,7 +30,7 @@ We can see the command return a base64 code `ZmxhZ3t0aDFzXzFzX3RoM18xc3Rfc3Q0ZzM
 <img width="1497" height="563" alt="image" src="https://github.com/user-attachments/assets/085b992c-b88e-4459-bc73-05ecc80a6e40" />
 > flag{th1s_1s_th3_1st_st4g3!!}
 
-Next to the second clue: `The crash happened when she was trying to draw something.`. She’s drawing on her computer, so I think it might have some paint's processes on it. I used pslist plugin to list all running processes.
+Next to the second clue: `The crash happened when she was trying to draw something`. She’s drawing on her computer, so I think it might have some paint's processes on it. I used pslist plugin to list all running processes.
 ```
 vol2.exe -f MemoryDump_Lab1.raw --profile=Win7SP1x64_23418 pslist
 ```
@@ -56,4 +56,27 @@ vol2.exe -f MemoryDump_Lab1.raw --profile=Win7SP1x64_23418 cmdline
 ```
 <img width="1455" height="74" alt="image" src="https://github.com/user-attachments/assets/840264b0-343b-4885-9145-0a340f0b0412" />
 
-We have a file named Important.rar. It seem
+We have a file named Important.rar. It seem to be contain the flag inside, so I'm going to dump this file by use the dumpfiles plugin. First, I use the filescan plugin combined with findstr to find physicaL offset of this file.
+```
+vol2.exe -f MemoryDump_Lab1.raw --profile=Win7SP1x64_23418 filescan | findstr /I "important.rar"
+```
+<img width="1455" height="156" alt="image" src="https://github.com/user-attachments/assets/64272a09-784b-4b18-b828-8eb13bd2560b" />
+
+After I have it, I proceeded to dump that file.
+```
+vol2.exe -f MemoryDump_Lab1.raw --profile=Win7SP1x64_23418 dumpfiles -Q 0x000000003fa3ebc0 -D .
+```
+We have a file named `file.None.0xfffffa8001034450.dat`. Then I renamed it to Important.rar and extract it
+<img width="828" height="236" alt="image" src="https://github.com/user-attachments/assets/71cfb240-865b-4287-acf3-e2e239f60704" />
+
+It request password to extract and we can see the pop up message tell us the password is NTLM hash(in uppercase) of Alissa's account passwd. I used the hashdump plugin to dumps passwords hashes (LM/NTLM) from memory
+```
+vol2.exe -f MemoryDump_Lab1.raw --profile=Win7SP1x64_23418 hashdump
+```
+<img width="1457" height="192" alt="image" src="https://github.com/user-attachments/assets/215f7421-4b0d-4c46-a5c8-6b67fe7def59" />
+
+The hash `f4ff64c8baac57d22f22edc681055ba6` is NTLM hash of Alissa's account password. Then we just uppercase this hash and enter password for flag3.png.
+After extracted, I open the flag3.png file to get the 3rd flag.
+<img width="506" height="502" alt="image" src="https://github.com/user-attachments/assets/2ea84e5d-0466-41dc-b5f9-f1d14dde7f19" />
+
+> flag{w3ll_3rd_stage_was_easy}
