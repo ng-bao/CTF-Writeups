@@ -43,6 +43,7 @@ Just as I thought, we have a process related to "paint". Then I dumped memory of
 vol2.exe -f MemoryDump_Lab1.raw --profile=Win7SP1x64_23418 memdump -P 2424 -D .
 ```
 In RAM, an image doesn't exist as a complete file, but rather as a continuous sequence of pixels. Paint holds these pixels in memory to display them on the screen. By adjusting the Width in GIMP, we are helping the software determine after how many pixels it should wrap to the next line to form a complete picture. So I will use GIMP(GNU Image Manipulation Program) and renamed this file to 2424.data so that GIMP can read it.
+
 <img width="740" height="782" alt="image" src="https://github.com/user-attachments/assets/ed6d18ee-9664-400e-8327-53117fa54d65" />
 
 After several minutes, I finally dialed in the parameters that allowed me to render the drawn content. But it had a small issue, the picture is inverted vertically and mirrored horizontally, I solved it by apply the Flip vertically function to correct the photo and get the second flag.
