@@ -3,11 +3,13 @@ Incident response recovered a damaged archive from an isolated workstation. The 
 Follow both trails, reconstruct the hidden message, and recover the token.
 
 # Solve
-We have two files, the first one has two pictures which seem very similar, I used strings command to see what diference inside them and found that the difference is `AUTH_FRAGMENT_B64` value. So I decoded-base64 both of them.
+We are given two files. The first set consists of two images that appear identical. By using the strings command to compare them, I discovered that the difference lies in the AUTH_FRAGMENT_B64 value. After decoding the Base64 strings from both images:
 
-At the first image named `cam_300.jpg`, we have this message `Always_check_both_images` and the second one is `0r4ng3_ArCh1v3_T4bSp4ce!`.
+* cam_300.jpg revealed the message: `Always_check_both_images`
 
-I don't know the message in the 2nd picture is the hint or a part of flag so I processed solve the 2nd file. This file was compressed 999 times so I code a tool to extract all of them
+* The second image revealed: `0r4ng3_ArCh1v3_T4bSp4ce!`
+
+The second file was a recursive archive, compressed 999 times. I wrote a Python script to automatically extract all layers:
 ```python
 import tarfile
 import os
@@ -27,13 +29,14 @@ def extract_tar(file_path, extract_path='.'):
 target_file = 'File2.tar'
 extract_tar(target_file, './extracted_result')
 ```
-After extracted all, we have a file named `noo.txt`. I open this file and see that this is a binary file with the `PK` magic bytes. I sure that this is a zip file so I changed it's extension from `.txt` to `.zip` and extract them. But it require the password to extracted, then I look back on the messages from two pictures that I think highly is a password so I tried them one by one and the password is the second message. Inside the zip file contain two files, one naned notes.md and the others is Notaflag.txt. First I open notes.md
+After extraction, a file named `noo.txt` was obtained. Examining the file's magic bytes revealed `PK`, indicating it was actually a `ZIP` file. I changed the extension to `.zip` and attempted to extract it. It prompted for a password, and the second message found in the images `0r4ng3_ArCh1v3_T4bSp4ce!` worked successfully. Inside the zip file contain two files, one naned notes.md and the others is Notaflag.txt. First I open notes.md
+
 <img width="622" height="182" alt="image" src="https://github.com/user-attachments/assets/2ea406d3-c2d7-44b6-b295-f82238165ffe" />
 
-When I open another file, I don't see anything in this. But when I use `ctrl + A` to highlight all text to check the whitespace language possible then I see that
+While Notaflag.txt appeared empty at first glance, highlighting the text (Ctrl + A) revealed hidden characters (tabs and spaces).
 <img width="1179" height="1008" alt="image" src="https://github.com/user-attachments/assets/da56a27d-f831-4efe-b94a-529617dacc97" />
 
-It highly is the whitespace language so I use the following python program to decode it by transform space character to 0 and tab to 1
+This is a classic Whitespace Steganography challenge. I used the following Python script to decode the message by treating spaces as 0 and tabs as 1:
 ```python
 with open('NotaFlag.txt', 'r') as f:
     raw_bin = "".join(['0' if c == ' ' else '1' for c in f.read() if c in ' \t'])
@@ -45,5 +48,4 @@ for i in range(0, len(raw_bin), 8):
 
 print(ascii_text)
 ```
-After run this, I got the flag
 > utflag{d1ff_th3_tw1ns_unt4r_th3_st0rm_r34d_th3_wh1t3sp4c3}
