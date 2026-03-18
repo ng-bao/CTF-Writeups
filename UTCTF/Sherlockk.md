@@ -10,3 +10,5 @@ The threat actor downloaded a file from a online text storage site that mean the
 Therefor, I can find what URL the threaat actor was acess that is `http://pastes.io/download/nhy8LSzI`.
 
 ### 2. CheckpointB:  The threat actor wrote a note on the machine that may or may not by benign. There may be multiple notes, but we want the one concerning the admin user.It's been deleted from the triage, but can you retrieve the contents of the note?
+
+Initially, I checked in `$Recycle_bin` but not found no result. That mean the threat actor was completely deleted it. There is a only way to find this note which is analyze a file named `$MFT` by using the `MFTExplorer` tool. This file 
