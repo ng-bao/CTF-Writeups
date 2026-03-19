@@ -14,7 +14,7 @@ Initially, I checked in `$Recycle_bin` but not found no result. That mean the th
 
 I tried combine them together and this is the correct answer.
 
-Password: `Lecttuce-Cabbage-Carrots`
+Password: `Lettuce-Cabbage-Carrots`
 
 ### 3. CheckpointC: The threat actor downloaded a file enumeration script. Can you submit the MD5 Hash of that file?
 I searched the downloads directory and discovered a script file. After checking the file on VirusTotal, I extracted its MD5 hash to use as the password, and it worked perfectly.
