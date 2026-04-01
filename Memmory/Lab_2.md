@@ -51,7 +51,9 @@ By parsing `history`, we can see a download link.
 That means the victim downloaded something on the internet, then I search this link on browser and got a file named `Important.zip`. But it require password to extract and they give the way to find this password.
 <img width="885" height="70" alt="image" src="https://github.com/user-attachments/assets/a051ba5e-54c2-4b51-856f-16bb209e0cd7" />
 
+The stage-3-flag in lab 1 is `flag{w3ll_3rd_stage_was_easy}`. We just encode this to `SHA-1` and enter password then get the flag 
 
+Flag 3: `flag{oK_So_Now_St4g3_3_is_DoNE!!}`
 
 
 vol2.exe -f MemoryDump_Lab2.raw --profile=Win7SP1x64_23418
