@@ -12,7 +12,7 @@ $ sudo apt install steghide
 The flag format for this lab is: inctf{s0me_l33t_Str1ng}
 
 # Tools/Software
-* Cyperchef  
+* Cyberchef  
 * Steghide
 
 # Prepare
@@ -22,11 +22,11 @@ We first start by using imageinfo plugin to determine the image profile.
 Profile: `Win7SP1x86`
 
 # Analyze the description
-* We need to find the `secret piece of information` to get the encrypted text and the `malicious script` to know what algorithms is used to encrypted them. 
-* Combined from `Note-2` and the `steghide` tool, I think another part of flag is embeded inside a picture.
+* We need to identify the `secret piece of information` (the encrypted text) and the `malicious script` to understand the encryption algorithm used.
+* Combined with `Note-2` and the `steghide` tool, it is likely that the second part of the flag is embedded within an image.
 
 # Solve
-First, I reviewed the process list to find some unusual process but have no result. Next, I used the `cmdline` plugin to display process command-line arguments and found some files seem suspicious. 
+First, I reviewed the process list to find for any unusual activity but found nothing suspicious. Next, I used the `cmdline` plugin to display process command-line arguments and found some files seem suspicious. 
 <img width="1094" height="152" alt="image" src="https://github.com/user-attachments/assets/62a802f9-c6ba-4e59-b033-973e009b5279" />
 
 Both of them are from `notepad.exe` That's the reason why I couldn't find anything suspicious in process list. After that I proceeded extract them.
@@ -59,13 +59,13 @@ if __name__ == "__main__":
 
         f.close()
 ```
-* And in `vip.txt` we have a base64 string `am1gd2V4M20wXGs3b2U=`.
+* And with `vip.txt`, we have a base64 string `am1gd2V4M20wXGs3b2U=`.
 
 We can see the encryption algorithm used in this script which is encoding to `Base64` and  `XOR with 3`.Based on that, we can recover the plaintext, which is the first part of flag
 
-Part-1: `inctf{0n3_h4lf`.
+Part-1: `inctf{0n3_h4lf`
 
-After got the first part, I searched some file with keywords `jpg`, `png`, `jpeg` and found this.
+After getting the first part, I searched some file with keywords `jpg`, `png`, `jpeg` and found this.
 <img width="1681" height="86" alt="image" src="https://github.com/user-attachments/assets/ba4e7fe5-d54d-42f4-962d-82b1f6b83a2a" />
 
 After extracted it, I tried open to check but there is nothing. After that, I extracted by using the `steghide` tool with the password is the first part and got a file named `secret text`, which contain the second part of flag.
