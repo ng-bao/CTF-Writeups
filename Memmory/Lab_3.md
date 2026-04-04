@@ -22,7 +22,8 @@ We first start by using imageinfo plugin to determine the image profile.
 Profile: `Win7SP1x86`
 
 # Analyze the description
-We need to find the `secret piece of information` to get the encrypted text and the `malicious script` to know what algorithms is used to encrypted them. Combined from `Note-2` and the `steghide` tool, I think another part of flag is embeded inside a picture.
+* We need to find the `secret piece of information` to get the encrypted text and the `malicious script` to know what algorithms is used to encrypted them. 
+* Combined from `Note-2` and the `steghide` tool, I think another part of flag is embeded inside a picture.
 
 # Solve
 First, I reviewed the process list to find some unusual process but have no result. Next, I used the `cmdline` plugin to display process command-line arguments and found some files seem suspicious. 
@@ -60,7 +61,15 @@ if __name__ == "__main__":
 ```
 * And in `vip.txt` we have a base64 string `am1gd2V4M20wXGs3b2U=`.
 
-We can see this scrip 
-vol2.exe -f MemoryDump_Lab3.raw --profile=Win7SP1x86
-Win7SP1x86_23418
-inctf{0n3_h4lf_1s_n0t_3n0ugh}
+We can see the encryption algorithm used in this script which is encoding to `Base64` and  `XOR with 3`.Based on that, we can recover the plaintext, which is the first part of flag
+
+Part-1: `inctf{0n3_h4lf`.
+
+After got the first part, I searched some file with keywords `jpg`, `png`, `jpeg` and found this.
+<img width="1681" height="86" alt="image" src="https://github.com/user-attachments/assets/ba4e7fe5-d54d-42f4-962d-82b1f6b83a2a" />
+
+After extracted it, I tried open to check but there is nothing. After that, I extracted by using the `steghide` tool with the password is the first part and got a file named `secret text`, which contain the second part of flag.
+
+part-2: `_1s_n0t_3n0ugh}`
+
+Flag: `inctf{0n3_h4lf_1s_n0t_3n0ugh}`
