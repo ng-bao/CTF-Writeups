@@ -54,8 +54,3 @@ That means the victim downloaded something on the internet, then I search this l
 The stage-3-flag in lab 1 is `flag{w3ll_3rd_stage_was_easy}`. We just encode this to `SHA-1` and enter password then get the flag 
 
 Flag 3: `flag{oK_So_Now_St4g3_3_is_DoNE!!}`
-
-
-vol2.exe -f MemoryDump_Lab2.raw --profile=Win7SP1x64_23418
->flag{w3lc0m3_T0_$T4g3_!_Of_L4B_2}
->
