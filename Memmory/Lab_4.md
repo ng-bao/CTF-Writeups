@@ -31,9 +31,9 @@ I think it maybe contain something interested so I tried to find the file that c
 We got a note after extracted it.
 > the clipboard plugin works well but it doesn't give the flag
 
-We got a hint(I think so). Then I reviewed the clipboard content but have no result. 
+I think that note maybe a hint so I tried to find anything related to the clipboard but have no result. 
 
-I shifted my focus to `Master File Table` and finally found the content of `Important.txt` that was deleted.
+After that, I shifted my focus to `Master File Table` and finally found the content of `Important.txt` that was deleted
 <img width="1856" height="433" alt="image" src="https://github.com/user-attachments/assets/a6340f4d-0b28-4a97-823a-659b17c5b7af" />
 
 Flag: `inctf{1_is_n0t_EQu4l_7o_2_bUt_th1s_d0s3nt_m4ke_s3ns3}`
