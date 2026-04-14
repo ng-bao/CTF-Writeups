@@ -12,6 +12,7 @@ $ sudo apt install steghide
 The flag format for this lab is: inctf{s0me_l33t_Str1ng}
 
 # Tools/Software
+* Volatility 2
 * Cyberchef  
 * Steghide
 
