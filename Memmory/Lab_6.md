@@ -12,8 +12,7 @@ The flag format for this lab is: inctf{s0me_l33t_Str1ng}
 # Solve
 After listing all processes by using `pslist`, I saw both Chrome and Firefox was accessed.
 Based on the description, I conducted a search to find a flie contain information about `Browsing history` from Chrome and Firefox.
-* In Chrome database, I saw a link whom 
-
+* Chrome database
 
 
 
