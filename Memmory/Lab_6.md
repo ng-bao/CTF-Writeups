@@ -13,7 +13,7 @@ The flag format for this lab is: inctf{s0me_l33t_Str1ng}
 After listing all processes by using `pslist`, I saw both Chrome and Firefox was accessed.
 Based on the description, I conducted a search to find a flie contain information about `Browsing history` from Chrome and Firefox.
 * Chrome database
-
+Diving into  `Chrome database`, we can see a link that took to a website called `Pastebin` contains message including a online document link and a note. By access to that online document, it contain a long
 
 
 
