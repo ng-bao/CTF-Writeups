@@ -13,7 +13,12 @@ The flag format for this lab is: inctf{s0me_l33t_Str1ng}
 After listing all processes by using `pslist`, I saw both Chrome and Firefox was accessed.
 Based on the description, I conducted a search to find a flie contain information about `Browsing history` from Chrome and Firefox.
 * Chrome database
-Diving into  `Chrome database`, we can see a link that took to a website called `Pastebin` contains message including a online document link and a note. By access to that online document, it contain a long
+Diving into  `Chrome database`, we can see a link that took to a website called `Pastebin` contains message including a online document link and a note. By access to that online document, it contain a long paragraph and we found a mega download link was embeded into it.We tried to accessed that link but it requires a key to download.
+
+After that, we check in `Clipboard` and `Environment` but have no result, then while checking the screenshots, we found that
+
+
+It means owner's device logged in email via `Firefox` so we continue investigate the Firefox history database to find more clues.
 
 
 
