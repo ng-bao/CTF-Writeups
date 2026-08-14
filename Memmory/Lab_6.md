@@ -51,7 +51,8 @@ By using `cmdscan` plugin, we can see a file named `flag.rar` but it requires a 
 <img width="1320" height="53" alt="image" src="https://github.com/user-attachments/assets/7e1a2a11-8142-4872-988c-ddb1f6ecf993" />
 
 After extracting, we got the second part of flag.
+
 <img width="500" height="500" alt="flag2" src="https://github.com/user-attachments/assets/78b69b2e-95a2-479e-b02b-9480878de450" />
 
-**Part 2:** `aN_Am4zINg_!_i_gU3Ss???_}`
+**Part 2:** `aN_Am4zINg_!_i_gU3Ss???_}`.
 
