@@ -47,3 +47,5 @@ We tried search this name in hopes of finding a file but have no result, and the
 
 With that flag, we also got the second flag by using it as a password
 <img width="1080" height="1080" alt="Stage2" src="https://github.com/user-attachments/assets/c9e33318-cf78-4f68-8c76-ae5145f154cf" />
+
+**Flag:** `flag{W1th_th1s_$taGe_2_1s_cOmPL3T3 _!!}`
