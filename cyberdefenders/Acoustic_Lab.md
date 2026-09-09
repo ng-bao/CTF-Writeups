@@ -1,4 +1,4 @@
-# Description
+<img width="355" height="27" alt="image" src="https://github.com/user-attachments/assets/c856e084-2250-48ca-91bc-4e9d42eb4a70" /># Description
 <img width="646" height="490" alt="image" src="https://github.com/user-attachments/assets/1aedae49-c7f6-42ff-93a6-f103cf9593f8" />
 
 # Solve
@@ -34,6 +34,13 @@ As mentioned in Q4, extension 100 is the only one didn't has `Authorization` pac
 
 Answer: `100`
 
+## Question 6: How many extensions were scanned in total?
+We used this command to count how many extensions were scanned in total
+
+<img width="503" height="50" alt="image" src="https://github.com/user-attachments/assets/7082d03b-e8d4-4e72-9d54-d663db5c2c75" />
+
+Answer:`2652`
+
 ## Question 7: There is a trace for a real SIP client. What is the corresponding user-agent? (two words, once space in between)
 Beside the `User-Agent: friendly-scanner` belongs to `SIPvicios` suite, we also have another `User-Agent` which is real SIP client.
 <img width="499" height="65" alt="image" src="https://github.com/user-attachments/assets/4f9f77e1-8b67-4c33-94f3-920b412c6155" />
@@ -55,10 +62,22 @@ The attacker initially attempted to access the `/maint` page but was blocked by 
 
 Answer: `maint:password`
 ## Question 10: Which codec does the RTP stream use? (3 words, 2 spaces in between)
-We can identify the audio codec by checking `Telephony -> RTP -> RTP Streams`
-<img width="1280" height="56" alt="image" src="https://github.com/user-attachments/assets/58c4efde-df0b-4eb7-bde2-b73167798912" />
-
-In the `Payload` field, we can see the codec which the RTP steam use, then fill the answer following to answer format.
+Just checking `RTP` packet. We can see codec type in `PT`(Payload Type) field. 
+<img width="746" height="15" alt="image" src="https://github.com/user-attachments/assets/151ca8c7-14bf-432d-b9c7-4fee79ccabad" />
 
 Answer: `ITU-T G.711 PCMU`
 
+## Question 11: 
+
+## Question 12: What was the password for the account with username 555?
+
+
+## Question 13: Which RTP packet header field can be used to reorder out of sync RTP packets in the correct sequence?
+<img width="805" height="21" alt="image" src="https://github.com/user-attachments/assets/e07522c6-3605-4359-aa7e-520ced71e86d" />
+
+In any `RTP` packet like which one in this image, after `Payload Type` field we have 3 ways to synchronization. The `SSRC`(Synchronization Source) field helps us identify packets originating from an unknown source; The `Seq`(Sequence Number) field is used to detect packet loss and to restore packet sequence; Finally, with the `Time`(Timestamp) field, we can achieve precise timing synchronization for media delivery, ensuring that packet sampling instants are preserved regardless of transmission order.
+
+So the field be responsible for reorder out of sync `RTP` packets is `Time`.
+
+Answer: `Timestamp`
+ 
