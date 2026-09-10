@@ -12,9 +12,7 @@ Answer: `UDP`
 
 ## Question 2: The attackers used a bunch of scanning tools that belong to the same suite. Provide the name of the suite.
 In `log.txt`, we can see that almost all requests have the `User-Agent` field set to `friendly-scanner`. Looking this up online reveals that this User-Agent belongs to the `SIPVicious` suite.
-> What is a user agent?
-> 
-> A user agent is a small piece of text that your web browser or script sends during an HTTP request to identify the client's software and operating system to the web server.
+<img width="1119" height="580" alt="image" src="https://github.com/user-attachments/assets/cb783376-00c2-4590-ad4c-2ef57ea814f6" />
 
 Answer: `SIPVicious`
 
