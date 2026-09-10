@@ -89,4 +89,12 @@ In any `RTP` packet like this one in image, after `Payload Type` field we have 3
 So the field be responsible for reorder out of sync `RTP` packets is `Time`.
 
 Answer: `Timestamp`
- 
+
+## Question 14: The trace includes a secret hidden message. Can you hear it?
+<img width="1280" height="800" alt="image" src="https://github.com/user-attachments/assets/fe4e7a6f-51fa-4c64-9ed4-e5194937e20f" />
+
+<img width="1280" height="800" alt="image" src="https://github.com/user-attachments/assets/e02d674a-65bf-4287-9e1f-bd35fe7a3d8f" />
+
+By the way, we can hear the secret message at nearly the end of audio.
+
+Answer:`Mexico`
