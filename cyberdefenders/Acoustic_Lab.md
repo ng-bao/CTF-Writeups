@@ -1,4 +1,4 @@
-<img width="355" height="27" alt="image" src="https://github.com/user-attachments/assets/c856e084-2250-48ca-91bc-4e9d42eb4a70" /># Description
+# Description
 <img width="646" height="490" alt="image" src="https://github.com/user-attachments/assets/1aedae49-c7f6-42ff-93a6-f103cf9593f8" />
 
 # Solve
@@ -9,7 +9,7 @@ in this lab, we need to explore the `RTP` protocol, so let`s check its definitio
 
 Answer: `UDP`
 
-## Question 2: The attacker used a bunch of scanning tools that belong to the same suite. Provide the name of the suite.
+## Question 2: The attackers used a bunch of scanning tools that belong to the same suite. Provide the name of the suite.
 In `log.txt`, we can see that almost all requests have the `User-Agent` field set to `friendly-scanner`. Looking this up online reveals that this User-Agent belongs to the `SIPVicious` suite.
 > What is a user agent?
 > 
@@ -25,7 +25,7 @@ the first two packets in the `pcap`file that we were given are belong to the `SI
 Answer: `Asterisk PBX 1.6.0.10-FONCORE-r40`
 
 ## Question 4: Which tool was only used against the following extensions: 100,101,102,103, and 111?
-With these extensions, we can see each of them has `REGISTER` requests with `Authorization` information except extension 100. It looks like a password `brute-force` attack, indicating that the attacker used `svcrack.py` in this situation. As for why extension 100 lacks `Authorization` packets, we suspect this extension does not require a password, so the tool didn`t send any Authorization packets.
+With these extensions, we can see each of them has `REGISTER` requests with `Authorization` information except extension 100. It looks like a password `brute-force` attack, indicating that the attackers used `svcrack.py` in this situation. As for why extension 100 lacks `Authorization` packets, we suspect this extension does not require a password, so the tool didn`t send any Authorization packets.
 
 Answer: `svcrack.py`
 
@@ -57,7 +57,7 @@ Answer: `00112524021`
 ## Question 9: What are the default credentials used in the attempted basic authentication? (format is username:password)
 <img width="814" height="164" alt="image" src="https://github.com/user-attachments/assets/fa27a207-d6cb-46ac-958a-b6d078a22dcf" />
 
-The attacker initially attempted to access the `/maint` page but was blocked by a password prompt. They then navigated back to the base IP address and were automatically redirected to users (packets `16`, `18`, `26`, `39`). After another failed attempt without credentials (packets `50`, `52`), the attacker retried with a password and successfully gained access, as seen in packets `60`, `62`, `71`, and `92`.
+The attackers initially attempted to access the `/maint` page but was blocked by a password prompt. They then navigated back to the base IP address and were automatically redirected to users (packets `16`, `18`, `26`, `39`). After another failed attempt without credentials (packets `50`, `52`), the attackers retried with a password and successfully gained access, as seen in packets `60`, `62`, `71`, and `92`.
 <img width="637" height="392" alt="image" src="https://github.com/user-attachments/assets/c215ed37-e6bc-4d5e-b219-cad6260d971d" />
 
 Answer: `maint:password`
@@ -70,12 +70,22 @@ Answer: `ITU-T G.711 PCMU`
 ## Question 11: 
 
 ## Question 12: What was the password for the account with username 555?
+Continuing from our analysis of the `Q9`, after the attackers accessed successfully into the `/maint` page.
+<img width="952" height="169" alt="image" src="https://github.com/user-attachments/assets/91a59051-996f-42ed-a433-f183a59e3ff8" />
 
+At packets `1208` and `1211` refer the attackers sent a `POST` request to activate `configEdit` module and a `GET` request to load administrator interface. After having permission to edit configuration file, they processed exploitation to `sip_custom.conf` as we can see in packet `1279` and server responded with `200 OK`.
+
+<img width="521" height="208" alt="image" src="https://github.com/user-attachments/assets/f06dedaf-70ac-4e6a-8cc7-abc2ffe4b391" />
+
+
+Passwords of extensions `555` and `556` were contained in there and they both are `1234`.
+
+Answer: `1234`
 
 ## Question 13: Which RTP packet header field can be used to reorder out of sync RTP packets in the correct sequence?
 <img width="805" height="21" alt="image" src="https://github.com/user-attachments/assets/e07522c6-3605-4359-aa7e-520ced71e86d" />
 
-In any `RTP` packet like which one in this image, after `Payload Type` field we have 3 ways to synchronization. The `SSRC`(Synchronization Source) field helps us identify packets originating from an unknown source; The `Seq`(Sequence Number) field is used to detect packet loss and to restore packet sequence; Finally, with the `Time`(Timestamp) field, we can achieve precise timing synchronization for media delivery, ensuring that packet sampling instants are preserved regardless of transmission order.
+In any `RTP` packet like this one in image, after `Payload Type` field we have 3 ways to synchronization. The `SSRC`(Synchronization Source) field helps us identify packets originating from an unknown source; The `Seq`(Sequence Number) field is used to detect packet loss and to restore packet sequence; Finally, with the `Time`(Timestamp) field, we can achieve precise timing synchronization for media delivery, ensuring that packet sampling instants are preserved regardless of transmission order.
 
 So the field be responsible for reorder out of sync `RTP` packets is `Time`.
 
