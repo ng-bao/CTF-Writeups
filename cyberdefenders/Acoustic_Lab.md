@@ -95,6 +95,6 @@ Answer: `Timestamp`
 
 <img width="1280" height="800" alt="image" src="https://github.com/user-attachments/assets/e02d674a-65bf-4287-9e1f-bd35fe7a3d8f" />
 
-By the way, we can hear the secret message at nearly the end of audio.
+By this way, we can hear the secret message at nearly the end of audio.
 
 Answer:`Mexico`
