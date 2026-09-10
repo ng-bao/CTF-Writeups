@@ -66,7 +66,16 @@ Just checking `RTP` packet. We can see codec type in `PT`(Payload Type) field.
 
 Answer: `ITU-T G.711 PCMU`
 
-## Question 11: 
+## Question 11: How long is the sampling time (in milliseconds)?
+To find the sampling time, we must know the fomular to calcular, which is $T= 1/f_s$
+
+With:
+* $T$: Sampling time($s$)
+* $f_s$: Sampling frequency($Hz$)
+
+According to `Q10`, we know that the codec type used is `G.711 PCMU`. By searching on the internet, that codec samples audio signals at the rate of 8000 ($Hz$). Applying this value to the fomular and convert them to $ms$ we got the sampling time.
+
+Answer:`0.125`
 
 ## Question 12: What was the password for the account with username 555?
 Continuing from our analysis of the `Q9`, after the attackers accessed successfully into the `/maint` page.
