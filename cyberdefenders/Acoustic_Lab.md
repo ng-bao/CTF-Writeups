@@ -4,8 +4,9 @@
 # Solve
 
 ## Question 1: What is the transport protocol being used?
-in this lab, we need to explore the `RTP` protocol, so let`s check its definition.
-> A protocol is designed to handle real-time traffic (like audio and video) of the Internet, is known as Real Time Transport Protocol (RTP). RTP must be used with `UDP`.
+By checking any `RTP` packets, we can see which transport protocol was used
+
+<img width="1280" height="383" alt="image" src="https://github.com/user-attachments/assets/ce2aff98-ae75-487c-a476-68f366f4ca19" />
 
 Answer: `UDP`
 
