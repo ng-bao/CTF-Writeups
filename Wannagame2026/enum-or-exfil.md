@@ -31,7 +31,7 @@ This image looks just fine. So we tried to extract `LSB` and `MSB` but have no r
 After that, we extracted that data and using `CyberChef` to decode them.
 <img width="1006" height="686" alt="image" src="https://github.com/user-attachments/assets/ee7f03d4-1990-4df4-83a1-b819703fde74" />
 
-At first glance, it seems to a garbage data, only one `ASCII` in each lines. But when we combined the whole data then we got a message that looks like the password.
+At first glance, it seems to be garbage data, only one `ASCII` in each line. But when we combined the whole data then we got a message that looks like the password.
 
 Password: `sneaky_network`
 
