@@ -21,4 +21,13 @@ As we can see a `JFIF` magic header, that means the machine '192.169.247.1' is s
 We processed extract all `credentials` content by extract all request packets to the `json` file first, then using `grep` to keep only `authorization` field. By `base64` decoding that credential, we got a image.
 <img width="544" height="600" alt="flag" src="https://github.com/user-attachments/assets/6441ec78-d8bc-478b-9f8c-2f462b1f123e" />
 
-Not like our realise, there are no flag was displayed on the image, then we check `LSB`, `MSB` and 
+This image look very usual. So we tried to extract `LSB` and `MSB` but have no result. Then we checked if this image contained any embedded files or information by using `binwalk` and `exiftool` but didn't get anything. Therefore, only one posible way we thinking, the flag maybe was embedded by the `steghide` tool, but we didn't know where is the password. First, we tried use the message on the image to extract but  it failed, then we overviewed the network capture file again and saw that besides the data transmitted over HTTP, there is also data was sent via `ICMP`. After that, we extracted that data and using `Cyperchef` to decode them.
+<img width="1006" height="686" alt="image" src="https://github.com/user-attachments/assets/ee7f03d4-1990-4df4-83a1-b819703fde74" />
+
+At first glance, it seems look like a garbage data, only one `ASCII` in each lines. But when we combined whole data then we got a message that looks like the password.
+
+Password: `sneaky_network`
+
+By using that passowrd, finally we can extract the hidden file which contain the flag.
+
+Flag: `W1{1t's_n0t_that_hard_t0_solve_th1s_r1ght?_(*^_^*)}`
