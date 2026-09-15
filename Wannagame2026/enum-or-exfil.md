@@ -35,7 +35,7 @@ At first glance, it seems to be garbage data, only one `ASCII` in each line. But
 
 Password: `sneaky_network`
 
-By using that password, finally we can extract the hidden file which contain the flag.
+By using that password, finally we can extract the hidden file containing the flag.
 
 Flag: `W1{1t's_n0t_that_hard_t0_solve_th1s_r1ght?_(*^_^*)}`
 
