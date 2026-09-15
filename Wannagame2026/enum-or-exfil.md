@@ -10,7 +10,7 @@ We were given a `pcap` file. First thing we can see is too many `GET` requests.
 <img width="1280" height="459" alt="image" src="https://github.com/user-attachments/assets/828c1ffb-414e-43bf-a143-2c3f6a2befe2" />
 
 
-In each packet, the request and respone look very similar except one thing which is the `Authorization` field. Then we tried to decode the credentials sent in the first packet.
+In each packet, the request and response look very similar except one thing which is the `Authorization` field. Then we tried to decode the credentials sent in the first packet.
 <img width="1280" height="800" alt="image" src="https://github.com/user-attachments/assets/d7dbeb1c-cc5b-42c1-81dc-fefacac63eac" />
 
 We have user: `firefly` with a very long password. Then we realised that this password also was a `base64` encoded so we decoded this again and got something interesting.
