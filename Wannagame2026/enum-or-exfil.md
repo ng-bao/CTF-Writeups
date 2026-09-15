@@ -19,7 +19,7 @@ We have user: `firefly` with a very long password. Then we realised that this pa
 
 As we can see a `JFIF` magic header, it means the machine 192.169.247.1 is sending an image via `Authorization` field. After that, we also checked the next two request packets but can't see any magic header so we think all request packets in here was used to transfer only one picture.
 
-We extracted all `credentials` by extract all request packets to the `json` file first, then using `grep` to keep only `authorization` field [1]. By `base64` decoding that credential, we got a image.
+We extracted all `credentials` by extract all request packets to the `json` file first, then using `grep` to keep only `authorization` field [1]. By `base64` decoding that credential, we got an image.
 
 <img width="544" height="600" alt="flag" src="https://github.com/user-attachments/assets/6441ec78-d8bc-478b-9f8c-2f462b1f123e" />
 
