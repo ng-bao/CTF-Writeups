@@ -40,7 +40,7 @@ By using that password, finally we can extract the hidden file containing the fl
 Flag: `W1{1t's_n0t_that_hard_t0_solve_th1s_r1ght?_(*^_^*)}`
 
 ---
-[1] After the competition, we found the more effective way to extract the `Authorization` field by using `tshark1` with the below command.
+[1] After the competition, we found the more effective way to extract the `Authorization` field by using `tshark` with the below command.
 
 ```bash
 tshark -r challenge.pcap -Y "http.authorization" -T fields -e http.authorization > credentials.txt
