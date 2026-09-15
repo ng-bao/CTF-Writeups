@@ -6,7 +6,7 @@ We found these packets, but we were quite... skeptical about their true meanings
 Attachments: [forensic_enum_or_exfil.zip](https://ctf.uithacking.club/e49a8a38-56a4-42d3-a666-8af905f967e6)
 
 # Solve
-We were given a `pcap` file. First thing we can see is too many `GET` request.
+We were given a `pcap` file. First thing we can see is too many `GET` requests.
 <img width="1280" height="459" alt="image" src="https://github.com/user-attachments/assets/828c1ffb-414e-43bf-a143-2c3f6a2befe2" />
 
 
