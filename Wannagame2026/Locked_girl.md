@@ -27,6 +27,6 @@ By opening that text file, we can see the `ip address` and `port` which the clie
 
 We will start with the `main` function first.
 
-<img width="670" height="252" alt="image" src="https://github.com/user-attachments/assets/ef9e2f9f-b232-48ee-b78e-6944a2b2b85d" />
+<img width="719" height="274" alt="image" src="https://github.com/user-attachments/assets/084d99f4-e25b-410e-90f6-0d2892d6c9d6" />
 
-From line `38` at `main` function, we can see how the two machines exchange the `session key`. First, the client send random 8 bytes contained in `array` to server and the server will also send back random 8 bytes containing in `array2`. After that, they will `xor` 2 arrays together and assign to `array3`.
+From line `38` to line `58` at `main` function, we can see how the two machines exchange the `session key`. First, the client send random 8 bytes contained in `array` to server and the server will also send back random 8 bytes containing in `array2`. After that, they will `xor` 2 arrays together and assign to `array3`.
