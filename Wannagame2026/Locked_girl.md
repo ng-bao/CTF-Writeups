@@ -10,7 +10,7 @@ Attachments: [forensics_locked_girl.zip](https://ctf.uithacking.club/cf6cbbad-38
 * Tshark
 * Cyperchef
 * dnspy.exe
-* Code editor
+* Code editor (visual studio code, Microsoft visual studio,...)
   
 # Solve
 We were given two files, `challenge.pcapng` and `sslkey.log`. Starting with the `pcapng` file, we can see `http` streams have been encrypted by the `TLS` 
