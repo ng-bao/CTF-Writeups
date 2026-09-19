@@ -6,8 +6,7 @@ Deep inside the forbidden library, two workstations were constantly communicatin
 Attachments: [forensics_locked_girl.zip](https://ctf.uithacking.club/cf6cbbad-38c8-4f3b-bddf-fde272f335c7)
 
 # Recommend Tools
-* Wireshark
-* Tshark
+* Wireshark / Tshark
 * Cyperchef
 * dnspy.exe
 * Code editor (visual studio code, Microsoft visual studio,...)
@@ -75,7 +74,7 @@ def generate(seed):
 seed = int(bytes(xor_arr()).hex(), 16)
 print (generate(seed))
 ```
-By running it, we will get the key. Next, after the client sent the secret number, they continuou sent a string which is encrypted `sessionKey`.
+By running it, we will get the key. Next, after the client sent the secret number, they continue send a string which is encrypted `sessionKey`.
 
 <img width="1277" height="751" alt="image" src="https://github.com/user-attachments/assets/87fc4005-c688-4dda-b76c-31390bff9613" />
 
