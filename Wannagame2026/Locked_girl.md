@@ -9,7 +9,7 @@ Attachments: [forensics_locked_girl.zip](https://ctf.uithacking.club/cf6cbbad-38
 * Wireshark / Tshark
 * Cyperchef
 * dnspy.exe
-* Code editor (visual studio code, Microsoft visual studio,...)
+* Code editor and necessary environment (visual studio code, Microsoft visual studio,...)
   
 # Solve
 We were given two files, `challenge.pcapng` and `sslkey.log`. Starting with the `pcapng` file, we can see `http` streams have been encrypted by the `TLS` 
@@ -49,7 +49,7 @@ Go back to the encrypted conversation, based on our thinking, two arrays will at
 
 <img width="1280" height="770" alt="image" src="https://github.com/user-attachments/assets/0b4458c3-49d4-4533-b036-4ed160596fac" />
 
-After got two necessary arrays, we wrote a basic python program demostrating the client source code to solve it (as first we intended recycle that source code but somehow it don't work right:v).
+After got two necessary arrays, we wrote a basic python program demostrating the client source code to solve it (as first we intended reuse that source code but somehow it don't work right:v).
 ```python
 def xor_arr():
     arr1 = [0x44, 0xad, 0x83, 0x8a, 0x9c, 0x5b, 0x6a, 0x8e]
@@ -143,12 +143,6 @@ By decoded them, we got a `zip` file.
 
 But it required the password to extract a file named `funny.png`. First, we think the password will be transfer via network but after a long time we can't find it. So we got up and asked for hint and knew that there are no password in here instead we must crack the `zip` file to get the image inside. By searching on the internet, we found this website talking about cracking `zip` file method.
 
->To conduct this attack, it requires at least 12 bytes of known plaintext and at least 8 of them must be contiguous. The larger the contiguous known plaintext, the faster the attack.
->
->What’s nice is that the Zip format can’t protect the filenames so even is the archive is encrypted we can still list filenames, retrieve the extension to understand what kind of document is stored and target fixed file signature (aka magic bytes) if you don’t know any content from the encrypted files.
->
->Then we can start the attack using bkcrack:
-
 Based on that method, we need to check which encryption algorithm is used by using the below command.
 ```bash
 7z l -slt <filename>.zip | grep Method
@@ -159,4 +153,25 @@ In this case, the encryption algorithm is `ZipCrypto Store`.
 
 <img width="272" height="40" alt="image" src="https://github.com/user-attachments/assets/2fc2c0e7-852f-4ae1-a1f2-84851f9903c9" />
 
-After knew the encryption conversation, it requires at least 12 bytes of known plaintext and at least 8 of them must be contiguous. The larger the contiguous known plaintext, the faster the attack.
+After knew the encryption conversation, we need to find as much plaintext as possible.
+
+> it requires at least 12 bytes of known plaintext and at least 8 of them must be contiguous. The larger the contiguous known plaintext, the faster the attack.
+>
+> What’s nice is that the Zip format can’t protect the filenames so even is the archive is encrypted we can still list filenames, retrieve the extension to understand what kind of document is stored and target fixed file signature (aka magic bytes) if you don’t know any content from the encrypted files.
+
+Following this quote, we can use magic bytes of encrypted file as plaintext. we know that the encrypted file is a `png` file which have fixed 16 bytes header(magic bytes + identifies a header chunk) so we can use `bkcrack` to crack it.
+```bash
+bkcrack -C hmm.zip -c funny.png -x 0 89504e470d0a1a0a0000000d49484452
+```
+Keys: `2607d18f d4c9f83e 954bd897`
+After that, we have several options.
+
+In this case, we will create copy archive with a chosen password.
+```bash
+bkcrack -C hmm.zip -k 18996980 070e64a5 38e61fb0 -U cracked.zip "hello"
+```
+Using this command will give you a zip file named `cracked.zip` with password `hello`.  And after extracted it and open the image, we got the flag.
+
+<img width="868" height="1228" alt="funny" src="https://github.com/user-attachments/assets/4368ba5b-0ebe-452f-9e59-dfe2b42e20fc" />
+
+Flag: `W1{h3r3_15_ur_r3w4rd_https://youtu.be/hvDBWw2C3Hg}`
