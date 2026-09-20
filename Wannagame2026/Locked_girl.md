@@ -164,6 +164,7 @@ Following this quote, we can use magic bytes of encrypted file as plaintext. we 
 bkcrack -C hmm.zip -c funny.png -x 0 89504e470d0a1a0a0000000d49484452
 ```
 Keys: `2607d18f d4c9f83e 954bd897`
+
 After that, we have several options.
 
 In this case, we will create copy archive with a chosen password.
