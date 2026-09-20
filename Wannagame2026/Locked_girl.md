@@ -85,3 +85,78 @@ With the key and the encrypted `sessionKey`, we can decrypt them and get the `se
 ECB_key: `23a0daa5e0bc7054c61df0eae0b3af51`
 
 SessionKey: `3036d86a55e5241fcc10e725ffa6fa215b475308ed3a4e879d79d618daeaa87d`
+
+After got `sessionKey`, we use `DecryptGCM` function which were given in source code.
+```c#
+// Client.Program
+// Token: 0x06000009 RID: 9 RVA: 0x00002658 File Offset: 0x00000858
+using System;
+using System.IO;
+using System.Net.Sockets;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+byte[] DecryptGCM(byte[] key, byte[] ciphertextMsg)
+{
+	if (ciphertextMsg.Length < 28)
+	{
+		throw new Exception("ciphertext too short");
+	}
+	byte[] array = new byte[12];
+	Buffer.BlockCopy(ciphertextMsg, 0, array, 0, 12);
+	int num = ciphertextMsg.Length - 12 - 16;
+	byte[] array2 = new byte[num];
+	Buffer.BlockCopy(ciphertextMsg, 12, array2, 0, num);
+	byte[] array3 = new byte[16];
+	Buffer.BlockCopy(ciphertextMsg, 12 + num, array3, 0, 16);
+	byte[] array4 = new byte[num];
+	byte[] result;
+	using (AesGcm aesGcm = new AesGcm(key, 16))
+	{
+		aesGcm.Decrypt(array, array2, array3, array4, null);
+		result = array4;
+	}
+	return result;
+}
+
+byte[] key = new byte[] {0x30, 0x36, 0xd8, 0x6a, 0x55, 0xe5, 0x24, 0x1f, 0xcc, 0x10, 0xe7, 0x25, 0xff, 0xa6, 0xfa, 0x21, 0x5b, 0x47, 0x53, 0x08, 0xed, 0x3a, 0x4e, 0x87, 0x9d, 0x79, 0xd6, 0x18, 0xda, 0xea, 0xa8, 0x7d};
+string file = @"D:\CTF\Wannagame\forensics_locked_girl\message.txt";
+
+foreach (string line in File.ReadLines(file))
+{
+	string clr = line.Trim();
+    byte[] ciphertext = Convert.FromHexString(clr);
+    byte[] decryptedBytes = DecryptGCM(key, ciphertext);
+    string resultText = Encoding.UTF8.GetString(decryptedBytes);
+    Console.WriteLine(resultText);
+}
+```
+In this code, we assigned the `sessionKey` to `key` variable, then we decrypted the whole conversation and got a very long `base64` code.
+
+<img width="287" height="211" alt="image" src="https://github.com/user-attachments/assets/1d589b66-838a-42df-b6a4-8c9048194250" />
+
+By decoded them, we got a `zip` file.
+
+<img width="1000" height="703" alt="image" src="https://github.com/user-attachments/assets/fe620986-ea4e-4285-8522-056d0842b7f2" />
+
+But it required the password to extract a file named `funny.png`. First, we think the password will be transfer via network but after a long time we can't find it. So we got up and asked for hint and knew that there are no password in here instead we must crack the `zip` file to get the image inside. By searching on the internet, we found this website talking about cracking `zip` file method.
+
+>To conduct this attack, it requires at least 12 bytes of known plaintext and at least 8 of them must be contiguous. The larger the contiguous known plaintext, the faster the attack.
+>
+>What’s nice is that the Zip format can’t protect the filenames so even is the archive is encrypted we can still list filenames, retrieve the extension to understand what kind of document is stored and target fixed file signature (aka magic bytes) if you don’t know any content from the encrypted files.
+>
+>Then we can start the attack using bkcrack:
+
+Based on that method, we need to check which encryption algorithm is used by using the below command.
+```bash
+7z l -slt <filename>.zip | grep Method
+```
+In this case, the encryption algorithm is `ZipCrypto Store`.
+
+**NOTE:** we named this zip file extracting from the conversation `hmm.zip`
+
+<img width="272" height="40" alt="image" src="https://github.com/user-attachments/assets/2fc2c0e7-852f-4ae1-a1f2-84851f9903c9" />
+
+After knew the encryption conversation, it requires at least 12 bytes of known plaintext and at least 8 of them must be contiguous. The larger the contiguous known plaintext, the faster the attack.
