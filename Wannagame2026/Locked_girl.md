@@ -138,7 +138,7 @@ By decoded them, we got a `zip` file.
 
 <img width="1000" height="703" alt="image" src="https://github.com/user-attachments/assets/fe620986-ea4e-4285-8522-056d0842b7f2" />
 
-But it required the password to extract a file named `funny.png`. First, we think the password will be transfer via network but after a long time we can't find it. So we got up and asked for hint and knew that there are no password in here instead we must crack the `zip` file to get the image inside. By searching on the internet, we found this website talking about cracking `zip` file method.
+But it required the password to extract a file named `funny.png`. First, we think the password will be transfer via network but after a long time we can't find it. So we got up and asked for hint and knew that there are no password in here instead we must crack the `zip` file to get the image inside. By searching on the internet, we found a website talking about cracking `zip` file method.
 
 Based on that method, we need to check which encryption algorithm is used by using the below command.
 ```bash
