@@ -150,7 +150,7 @@ In this case, the encryption algorithm is `ZipCrypto Store`.
 
 <img width="272" height="40" alt="image" src="https://github.com/user-attachments/assets/2fc2c0e7-852f-4ae1-a1f2-84851f9903c9" />
 
-After knew the encryption conversation, we need to find as much plaintext as possible.
+After knew the encryption algorithm, we need to find as much plaintext as possible.
 
 > it requires at least 12 bytes of known plaintext and at least 8 of them must be contiguous. The larger the contiguous known plaintext, the faster the attack.
 >
