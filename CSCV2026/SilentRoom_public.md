@@ -117,15 +117,17 @@ Result:
 
 <img width="769" height="217" alt="image" src="https://github.com/user-attachments/assets/98797bec-55d9-4d86-b6a5-db367b2b0575" />
 
-By reading the result, we knew why that girl left home for unclear reason. A was threatened by someone claiming to be from `Tổ công tác điều tra`. Following our guest, the scammers initialy leveraged A's scholarship information to construct a fake profile to threaten her. She was subsequently lured into working remotely and communicating through a covert channel (the ChatApp application we recently decrypted). According to the conversation logs in ChatApp, she was instructed to keep this matter confidential and strictly follow all orders. It appears she was ordered to travel to a specific location and permanently wipe all transport and booking ticket records. Additionally, a proof photo was found at the end, which had been XORed with a `matching key string`. 
+By reading the result, we knew why that girl left home for unclear reason. A was threatened by someone claiming to be from `Tổ công tác điều tra`. Following our guest, the scammers initialy leveraged A's scholarship information to construct a fake profile to threaten her. She was subsequently lured into working remotely and communicating through a covert channel (the ChatApp application we recently decrypted). According to the conversation logs in ChatApp, she was instructed to keep this matter confidential and strictly follow all orders. It appears she was ordered to travel to a specific location and permanently wipe all transport and booking ticket records. Additionally, a proof photo which had been XORed with a `matching key string`. 
 
-But the scammers didn't say A need to delete the browser, it means the cache including all things A downloaded still there so we decided to find the browser`s database and cache to find more envidences.
+But the scammers didn't say A need to delete the browser, it means the cache including all things A downloaded still there so we decided to find the browser`s database and cache to find more evidences.
 
 Based on the conversation, to find the `matching key string`. First we need to find the `PNR` (ticket's id). Starting from the `Google's history`, we found that
 
 <img width="743" height="227" alt="image" src="https://github.com/user-attachments/assets/c5c9782b-6bb2-482f-80ed-f4eaff42cd3a" />
 
-Look at that, we saw 2 reservations which A booking. The first is what we saw in `Downloads` and the another one has been deleted. In addition, we also see a search about booking tiket of NorthStar Express and based on the title, we guess the `PNR` code is `NSE1842`. The next we need to find is the booking status, but the conversation said that don't believe the old reservation which is `BAB-403DN` so we need to find the `HSR-260820-0401` receipt. After take a look on google's History but the not found any useful information except the `PNR`, we check it cache in `AppData\Local\Google\Chrome\User Data\Default\Cache` and found all things we need including `PNR`, `booking status`, `room number`, `location name`, `province`.
+Look at that, we saw 2 reservations which A booking. The first is what we saw in `Downloads` and the another one has been deleted. In addition, we also see a search about booking tiket of NorthStar Express and based on the title, we guess the `PNR` code is `NSE1842`. The next we need to find is the booking status, but the conversation said that don't believe the old reservation which is `BAB-403DN` so we need to find the `HSR-260820-0401` receipt. 
+
+After take a look on google's History but the not found any useful information except the `PNR`, we check it cache in `AppData\Local\Google\Chrome\User Data\Default\Cache` and found all things we need including `PNR`, `booking status`, `room number`, `location name`, `province`.
 
 <img width="552" height="314" alt="image" src="https://github.com/user-attachments/assets/007f51f8-943d-4bb1-864e-df977287e5c9" />
 
