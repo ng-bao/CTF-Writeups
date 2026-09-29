@@ -122,3 +122,54 @@ By reading the result, we knew why that girl left home for unclear reason. A was
 But the scammers didn't say A need to delete the browser, it means the cache including all things A downloaded still there so we decided to find the browser`s database and cache to find more envidences.
 
 Based on the conversation, to find the `matching key string`. First we need to find the `PNR` (ticket's id). Starting from the `Google's history`, we found that
+
+<img width="743" height="227" alt="image" src="https://github.com/user-attachments/assets/c5c9782b-6bb2-482f-80ed-f4eaff42cd3a" />
+
+Look at that, we saw 2 reservations which A booking. The first is what we saw in `Downloads` and the another one has been deleted. In addition, we also see a search about booking tiket of NorthStar Express and based on the title, we guess the `PNR` code is `NSE1842`. The next we need to find is the booking status, but the conversation said that don't believe the old reservation which is `BAB-403DN` so we need to find the `HSR-260820-0401` receipt. After take a look on google's History but the not found any useful information except the `PNR`, we check it cache in `AppData\Local\Google\Chrome\User Data\Default\Cache` and found all things we need including `PNR`, `booking status`, `room number`, `location name`, `province`.
+
+<img width="552" height="314" alt="image" src="https://github.com/user-attachments/assets/007f51f8-943d-4bb1-864e-df977287e5c9" />
+
+PNR: `NSE1842`
+```
+window.__STAYHUB_STATE__={1:'draft',2:'confirmed',4:'checked_in',7:'cancelled',9:'expired'};
+```
+```html
+{
+  "url": "https://stayhub.example/api/reservation/HSR-260820-0401",
+  "reservation": "HSR-260820-0401",
+  "state": 2,
+  "lodgingRef": "R8QK-72M-19",
+  "roomNumber": "401",
+  "cityCode": "DAD",
+  "checkinFrom": "2026-08-20T19:00:00+07:00",
+  "geoHint": "16.071:108.229",
+  "mapPinKey": "M-4412"
+}
+```
+Booking status: `confirmed`
+
+Room number: `401`
+
+<img width="554" height="384" alt="image" src="https://github.com/user-attachments/assets/4e9ae7af-ed48-4387-9c5c-bff0953b8f70" />
+
+Location name: `HanaRiverSide`
+
+Province: `DaNang`
+
+Combining all of them then we got the matching key string: `NSE1842|confirmed|401|HanaRiverSide|DaNang`
+
+The next information we got about the proof photo that we need to XOR.
+
+<img width="471" height="112" alt="image" src="https://github.com/user-attachments/assets/9620b0a0-fd93-436f-9c7e-9fc26c58134c" />
+
+Based on this image, we need to decrypt a file named `f_000089`.
+
+Exporting that object and xor with matching key string then we got the flag.
+
+<img width="1280" height="720" alt="final_flag" src="https://github.com/user-attachments/assets/fd52d1fc-6d3e-414a-b872-f79e7d8fa132" />
+
+Flag: `CSCV2026{F04nd_h3r_4t_401_HanaRiverSide_DaNang_fm0923812}`
+
+
+
+
