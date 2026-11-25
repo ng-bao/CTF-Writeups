@@ -6,4 +6,10 @@ During your shift as a tier-2 SOC analyst, you receive an escalation from a tier
 * Browser
 
 # Overview
-This lab t
+* This lab is talking about a critical vulnerability in Apache ActiveMQ.
+* Announced on Oct. 25, the flaw scored a maximum of 10.0 on the CVSS v3 scale.
+
+# Solve
+### Question 1: By identifying the C2 IP, we can block traffic to and from this IP, helping to contain the breach and prevent further data exfiltration or command execution. Can you provide the IP of the C2 server that communicated with our server?
+First we can see a machine `146.190.21.92` set up a connection with machine `134.209.197.3`, then 
+<img width="853" height="89" alt="image" src="https://github.com/user-attachments/assets/bf4ee3d2-c3e9-438e-b267-020c2d4f9c40" />
