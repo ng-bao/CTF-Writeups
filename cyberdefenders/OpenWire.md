@@ -21,4 +21,5 @@ And in `packet 6`, the machine `146.190.21.92` sent back a `ExceptionResponse` m
 
 Anwser: `146.190.21.92`
 
-###
+### Question 2: Initial entry points are critical to trace the attack vector back. What is the port number of the service the adversary exploited?
+
