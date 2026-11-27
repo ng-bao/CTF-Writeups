@@ -105,5 +105,10 @@ private Throwable createThrowable(String className, String message) {
         }
     }
 ```
-And we have this line: `OpenWireUtil.validateIsThrowable(clazz);`. By checking in commit history, 
+And we have this line: `OpenWireUtil.validateIsThrowable(clazz);`. By checking in commits history, we confirm that line is added at the patch for this vulnerability.
+
 <img width="685" height="335" alt="image" src="https://github.com/user-attachments/assets/a20df0a7-5088-43e2-a985-5c9fb1ce0afa" />
+
+<img width="653" height="140" alt="image" src="https://github.com/user-attachments/assets/3dbe8e75-f29a-4ec0-b85f-616bc10ae7d1" />
+
+Answer: `BaseDataStreamMarshaller.createThrowable`
