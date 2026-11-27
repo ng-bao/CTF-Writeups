@@ -15,7 +15,7 @@ First we can see in packets 1-3, the 3 ways handshake from `146.190.21.92` to `1
 
 <img width="853" height="56" alt="image" src="https://github.com/user-attachments/assets/3162241d-c0c0-4952-a1b5-beca59c84bb7" />
 
-And in `packet 6`, the machine `146.190.21.92` sent back a `ExceptionResponse` which was be marked as `Malformed Packet`.
+And in `packet 6`, the machine `146.190.21.92` sent back a `ExceptionResponse` which was marked as `Malformed Packet`.
 
 <img width="448" height="113" alt="image" src="https://github.com/user-attachments/assets/0f437f4b-6878-417d-ac5d-0888222d3508" />
 
@@ -59,3 +59,51 @@ Looking again the `xml` file, focus on this line
 
 <img width="436" height="149" alt="image" src="https://github.com/user-attachments/assets/a677ca84-9027-47e9-85e4-b182e8fa0320" />
 
+The attacker initialize class `java.lang.ProcessBuilder` which is used to create and execute processes or commands as OS level. In this case, this class help the attacker download that `docker` file and execute it.
+
+Answer: `java.lang.ProcessBuilder`
+
+### Question 7: To better understand the specific security flaw exploited, can you identify the CVE identifier associated with this vulnerability?
+Just searching on the internet with keyword `Apache ActiveMQ ClassPathXmlApplicationContext vulnerability`. We found some document talk about this vulnerability and CVE identifier.
+
+<img width="443" height="418" alt="image" src="https://github.com/user-attachments/assets/ef808a11-f851-4021-af94-3501f43d207a" />
+
+Answer:  `CVE-2023-46604`
+
+### Question 8: The vendor addressed the vulnerability by adding a validation step to ensure that only valid Throwable classes can be instantiated, preventing exploitation. In which Java class and method was this validation step added?
+With the keyword at question 7, we can also find a blog talk about how to fix this critical vulnerability from authos: `Siddartha Malladi and Arpit Kataria`. In this blog, they explain the detail of this vulnerability.
+
+The blog said that the main issue causing this vulnerability is the system's failure to properly check the creation of throwable classes within `ExceptionResponseMarshaller`. So the attacker leverages the `createThrowable` method (which can invoke a String-argument constructor on any arbitrary class) to force the system to instantiate Spring Framework's `ClassPathXmlApplicationContext`—even though this class is not a Throwable at all. Subsequently, ClassPathXmlApplicationContext loads a remote XML file from the attacker's server to execute system commands.
+
+And the solution is adding the `validateIsThrowable` method to the `BaseDataStreamMarshaller` parent class so that `ExceptionResponseMarshaller` is forced to validate the data type before instantiating any object from an error packet.
+```java
+public static void validateIsThrowable(Class<?> clazz) {
+
+    if (!Throwable.class.isAssignableFrom(clazz)) {
+
+        throw new IllegalArgumentException("Class " + clazz + " is not assignable to Throwable");
+
+    }
+
+}
+```
+First we submited the answer is `BaseDataStreamMarshaller.validateIsThrowable` but it not correct the answer form format so we tried to find the `BaseDataStreamMarshaller` source code on github because we saw that the attacker used the `createThrowable` method to attack and in the blog have mention to it like this
+> But the real standout feature is the createThrowable method within the BaseDataStreamMarshaller class. This method has an exceptional ability: it can activate the constructor of any class that requires a String parameter. This innovative function serves as a backbone for strengthening the product's security by ensuring the controlled creation of classes.
+
+So maybe this actually is true method which is added a validation step. After found that class source code, we can find the `createThrowable` method.
+```java
+private Throwable createThrowable(String className, String message) {
+        try {
+            Class clazz = Class.forName(className, false, BaseDataStreamMarshaller.class.getClassLoader());
+            OpenWireUtil.validateIsThrowable(clazz);
+            Constructor constructor = clazz.getConstructor(new Class[] {String.class});
+            return (Throwable)constructor.newInstance(new Object[] {message});
+        } catch (IllegalArgumentException e) {
+            return e;
+        } catch (Throwable e) {
+            return new Throwable(className + ": " + message);
+        }
+    }
+```
+And we have this line: `OpenWireUtil.validateIsThrowable(clazz);`. By checking in commit history, 
+<img width="685" height="335" alt="image" src="https://github.com/user-attachments/assets/a20df0a7-5088-43e2-a985-5c9fb1ce0afa" />
